@@ -1,0 +1,22 @@
+{
+  "name": "digitalexpansion",
+  "version": "1.0.0",
+  "description": "digitalexpansion.in",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandeepsinghcse0/digitalexpansion.git"
+  },
+  "keywords": [
+    "digitalexpansion"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sandeepsinghcse0/digitalexpansion/issues"
+  },
+  "homepage": "https://github.com/sandeepsinghcse0/digitalexpansion#readme"
+}
