@@ -1,0 +1,1 @@
+Localhost can be setup at location "C:\xampp\apache\conf\httpd.conf"
