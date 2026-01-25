@@ -69,7 +69,7 @@
                                     <span class="fa fa-globe"></span>
                                 </div>
                                 <div class="text">
-                                    <p><span>Website</span> <a href="#">critihome.in</a></p>
+                                    <p><span>Website</span> <a href="<?= $app_data->website_url ?>"><?= $app_data->website_url ?></a></p>
                                 </div>
                             </div>
                         </div>

@@ -44,36 +44,6 @@ class Home extends BaseController
         $this->app_data = $configModel->getConfig();
         $this->services_list = $serviceModel->getServices();
         $this->blogPosts = [
-            [
-                'slug' => 'blog_critihome_1',
-                'title' => 'Expert Home Health Care with a Healing Touch – Welcome to CritiHome',
-                'excerpt' => 'Learn how CritiHome provides hospital-quality care right at your doorstep, ensuring comfort, compassion, and recovery at home.',
-                'view' => 'blog_critihome_1',
-            ],
-            [
-                'slug' => 'blog_critihome_2',
-                'title' => 'Elderly Care at Home: A Gentle Approach to Healthy Aging – Welcome to CritiHome',
-                'excerpt' => 'Learn how CritiHome provides hospital-quality care right at your doorstep, ensuring comfort, compassion, and recovery at home.',
-                'view' => 'blog_critihome_2',
-            ],
-            [
-                'slug' => 'blog_critihome_3',
-                'title' => 'Healing at Home: Why Home Healthcare is the Future of Indian Healthcare',
-                'excerpt' => 'At CritiHome, we bring compassionate, clinical, and customized care right to your doorstep—24/7. Let’s explore why home healthcare is more than a convenience—it’s a revolution.',
-                'view' => 'blog_critihome_3',
-            ],
-            [
-                'slug' => 'blog_critihome_4',
-                'title' => '5 Common Myths About Home Health Care in Kolkata',
-                'excerpt' => 'by CritiHome Kolkata',
-                'view' => 'blog_critihome_4',
-            ],
-            [
-                'slug' => 'blog_critihome_5',
-                'title' => 'Beyond Medical Care: Providing Comfort and Dignity to Chronically Ill Patients at Home in Kolkata',
-                'excerpt' => 'CritiHome, Home Health Care Provider in Kolkata',
-                'view' => 'blog_critihome_5',
-            ]
         ];
     }
     public function index(): string
@@ -101,31 +71,6 @@ class Home extends BaseController
         return view('about', $this->data);
     }
 
-    public function instruments(): string
-    {
-        $visiter = ["visitor_ip" => $this->request->getIPAddress(), "page" => "Instruments"];
-        $this->visters->save($visiter );
-        $this->data['breadcrumb'] = 'About';
-        $this->data['app_data'] = $this->app_data;
-        $this->data['base_url'] = $this->base_url;
-        $this->data['city_list'] = $this->city_list;
-        $this->data['team_list'] = $this->team_list;
-        $this->data['services_list'] = $this->services_list;
-        return view('instruments', $this->data);
-    }
-
-    public function teams(): string
-    {
-        $this->data['breadcrumb'] = 'About';
-        $visiter = ["visitor_ip" => $this->request->getIPAddress(), "page" => "Teams"];
-        $this->visters->save($visiter );
-        $this->data['app_data'] = $this->app_data;
-        $this->data['base_url'] = $this->base_url;
-        $this->data['city_list'] = $this->city_list;
-        $this->data['team_list'] = $this->team_list;
-        $this->data['services_list'] = $this->services_list;
-        return view('teams', $this->data);
-    }
 
 
     public function blogs(): string

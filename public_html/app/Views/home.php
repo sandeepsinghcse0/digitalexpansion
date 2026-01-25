@@ -700,9 +700,6 @@ WE ARE THE FUTURE OF BETTER HEALTH CARE.
     </div>
 </section>
 
-<!-- our locations -->
-<?= view('servicelocations') ?>
-
 <!-- doctors list start -->
 <?php if ($team_list && count($team_list) > 0) { ?>
     <section class="doc-list-sec pt-50 pb-50">
