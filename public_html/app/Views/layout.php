@@ -297,7 +297,7 @@
         </div>
       </div>
     </div>
-    <a href="https://wa.me/918420218585" target="_blank" class="whatsapp-float">
+    <a href="https://wa.me/917836081224" target="_blank" class="whatsapp-float">
       <img src="http://localhost/images/icons/ui_revamp_whatsapp_icon.svg" alt="Chat on WhatsApp" class="my-float" style="width:50px;height:50px;" <?= base_url('/images/icons/ui_revamp_whatsapp_icon.svg'); ?>>
     </a>
   </footer>
