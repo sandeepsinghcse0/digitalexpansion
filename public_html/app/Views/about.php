@@ -2,143 +2,271 @@
 
 <?= $this->section('content') ?>
 
-<section class="section innerpage-banner">
+<style>
+    .about-banner {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 100px 0;
+        color: white;
+        text-align: center;
+    }
+
+    .about-banner h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        letter-spacing: -0.5px;
+    }
+
+    .about-banner p {
+        font-size: 1.1rem;
+        opacity: 0.95;
+        margin: 0;
+    }
+
+    .about-section {
+        padding: 60px 0;
+        position: relative;
+    }
+
+    .about-section:nth-child(even) {
+        background-color: #f8f9fa;
+    }
+
+    .about-content h2 {
+        font-size: 2rem;
+        color: #333;
+        font-weight: 700;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .about-content h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
+    }
+
+    .about-content p {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #555;
+        margin-bottom: 20px;
+    }
+
+    .about-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 30px 0;
+    }
+
+    .about-content ul li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        padding: 12px 14px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    .about-content ul li:hover {
+        background-color: #f0f4ff;
+        transform: translateX(5px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    }
+
+    .about-content ul li svg {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        margin-right: 12px;
+        margin-top: 2px;
+        fill: #667eea;
+    }
+
+    .about-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary-custom {
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn-primary-custom:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        color: white;
+    }
+
+    .breadcrumb-wrap {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+    }
+
+    .breadcrumb-wrap a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .breadcrumb-wrap a:hover {
+        color: white;
+    }
+
+    .breadcrumb-wrap a.active {
+        color: white;
+        font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+        .about-banner h1 {
+            font-size: 1.8rem;
+        }
+
+        .about-content h2 {
+            font-size: 1.5rem;
+        }
+
+        .about-section {
+            padding: 40px 0;
+        }
+    }
+</style>
+
+<!-- About Banner Section -->
+<section class="about-banner">
     <div class="container">
-        <div class="d-flex flex-column justify-content-center align-items-center page-intro">
-            <div class="breadcrumb-wrap mb-2 ">
-                <a href="#">Home /</a>
-                <a href="#" class="active">About Us</a>
+        <div class="breadcrumb-wrap">
+            <a href="<?= base_url('/') ?>">Home</a> /
+            <a href="#" class="active">About Us</a>
+        </div>
+        <h1>About Us</h1>
+        <p>Committed to Excellence and Innovation</p>
+    </div>
+</section>
+
+<!-- About Section 1 -->
+<section class="about-section" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-sm-12 col-12 mb-3 mb-md-0" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200">
+                <div class="about-image">
+                    <img src="<?= base_url('/images/about-1.png'); ?>" alt="About Company" class="img-fluid" />
+                </div>
             </div>
-            <div class="page-desc text-center">
-                <h1 class=" mb-4 ">
-               About CritiHome
-                </h1>
-                <p class=" f-s-18">
-                CritiHome – Heal at The Comfort of Your Home
-                </p>
+            <div class="col-md-6 col-sm-12 col-12" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                <div class="about-content">
+                    <h2>Who We Are</h2>
+                    <p>We are a forward-thinking company dedicated to delivering innovative solutions and exceptional service. Our team brings together years of experience and expertise to serve our clients with integrity, professionalism, and commitment.</p>
+                    <p>Our mission is to create meaningful impact through quality solutions, ensuring every client receives dedicated attention and outstanding results that exceed expectations.</p>
+                    
+                    <h3 style="font-size: 1.2rem; color: #333; margin-top: 30px; margin-bottom: 15px;">Why Choose Us</h3>
+                    <ul>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
+                            </svg>
+                            Expert team with proven track record
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
+                            </svg>
+                            Customer-centric approach to service delivery
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
+                            </svg>
+                            Innovative solutions tailored to your needs
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
+                            </svg>
+                            Transparent communication and partnership approach
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
+</section>
+
+<!-- About Section 2 -->
+<section class="about-section" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-sm-12 col-12 order-md-2 mb-3 mb-md-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="about-image">
+                    <img src="<?= base_url('/images/about-2.png'); ?>" alt="Our Services" class="img-fluid" />
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-12 order-md-1" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">
+                <div class="about-content">
+                    <h2>Our Commitment</h2>
+                    <p>We believe in building long-term relationships with our clients based on trust, quality, and measurable results. Our approach combines strategic thinking with technical expertise to deliver solutions that drive real business impact.</p>
+                    <p>Every project is handled with meticulous attention to detail, ensuring that we not only meet but exceed expectations. We're committed to continuous improvement and staying at the forefront of industry innovation.</p>
+                    
+                    <h3 style="font-size: 1.2rem; color: #333; margin-top: 30px; margin-bottom: 15px;">What We Deliver</h3>
+                    <ul>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
+                            </svg>
+                            High-quality deliverables on time
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
+                            </svg>
+                            Comprehensive support and documentation
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
+                            </svg>
+                            Scalable solutions for growth
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
+                            </svg>
+                            Ongoing maintenance and optimization
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
-  <!-- about us section start -->
-  <section class="about-sec grey-bg position-relative pt-50 pb-50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-sm-12 col-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                        <img src="<?= base_url('/images/about-1.png'); ?>" alt="About 1" class="img-fluid" />
-                    </div>
-                    <div class="col-md-7 col-sm-12 col-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                        <div class="h-about position-relative">
-                            <img class="blue-star" src="<?= base_url(); ?>/images/icons/blue-star.png" alt="star">
-                            <img class="red-star" src="<?= base_url(); ?>/images/icons/red-star.png" alt="star">
-                            <h2 class="title">
-                                CRITIHOME – Heal at The Comfort  of Your Home
-                               
-                               Services!<span class="t-child-2">Advance Home Care At home</span>
-                            </h2>
-                            <p>CritiHome Medical delivers quality care with compassion. We bring quality medical care into our patients’ homes and aim to make primary healthcare not only more accessible, but also more affordable and accountable to our patients’ needs.</p>
-                            <p>
-                    CritiHome is ready to respond with timely, trusted, and professional healthcare at home—because your health deserves care beyond hospital walls.
-                    </p>
-        
-                            <p>
-                            <b>Our Exclusively Crafted Plans include:</b>
-                            </p>
-                            <ul>
-                                <li class="w-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                                    </svg>
-                                    Regular home visits by Physicians and Physiotherapists
-                                </li>
-                                <li class="w-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                                    </svg>
-                                    Personalised health records
-                                </li>
-                                <li class="w-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                                    </svg>
-                                    Medicine delivery to home
-                                </li>
-                                <li class="w-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                                    </svg>
-                                    Lab investigations with discounted tariff
-                                </li>
-                                <li class="w-100">
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                                    </svg>
-                                    Lab investigations with discounted tariff
-                                </li>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-  <section class="about-sec position-relative pt-50 pb-50">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7 col-sm-12 col-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                        <div class="h-about position-relative">
-                            <img class="blue-star" src="<?= base_url(); ?>/images/icons/blue-star.png" alt="star">
-                            <img class="red-star" src="<?= base_url(); ?>/images/icons/red-star.png" alt="star">
-                            <h2 class="title">
-                                Medical services & diagnostics
-                                <span class="t-child-2">Committed To Delivering High Quality Medical & Diagnostics
-                                    Services!</span>
-                            </h2>
-                            <p>OUR GOAL IS TO IMPROVE QUALITY,
-MAXIMIZE OUTCOMES AND REDUCE RE-HOSPITALISATION AND COST THROUGH A PATIENT-CENTERED DOMICILIARY
-MODEL.</p>
-<p>WE ARE INNOVATIVE AND HAVE A COMMON DREAM OF CHANGING HEALTHCARE FOR THE BETTER WE ARE PROVIDING PERSONALIZED SERVICE TO PATIENTS.
-WE ARE THE FUTURE OF BETTER HEALTH CARE.
-</p>
-                            <ul>
-                                <li>
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                                    </svg>
-                                    Ambulance Services
-                                </li>
-                                <li>
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                                    </svg>
-                                    On call Doctors
-                                </li>
-                                <li>
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                                    </svg>
-                                    Rehablitation
-                                </li>
-                                <li>
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                                    </svg>
-                                    24/7 Medical Services
-                                </li>
-                                <li>
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                                    </svg>
-                                    Sample Collection
-                                </li>
-                            </ul>
-                            <a href="#!" class="theme-red-dark-btn" data-toggle="modal" data-target="#bookNowModal">Book Now</a>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-sm-12 col-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-                    <img src="<?= base_url(); ?>/images/about-2.png" alt="About 2" class="img-fluid" />
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- about us section end -->
+
 <?= $this->endSection() ?>

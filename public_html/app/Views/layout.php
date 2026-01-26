@@ -7,18 +7,18 @@
   <meta name="baseURL" value="<?= base_url() ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Digital Expansion Pvt Ltd | IT Services Company in India | Web, Salesforce & Shopify Experts | IT Services Company in Noida</title>
-  <meta name="description" content="<?= isset($description) ? esc($description) : "CritiHome offers expert home healthcare, nursing, physiotherapy, and elder care services in Kolkata. Book now for compassionate care at home." ?>">
+  <meta name="description" content="Digital Expansion Pvt Ltd provides expert Web, Salesforce, Shopify & Mobile App development services in Noida, India for growing businesses.">
   <meta name="keywords" content="IT services company, IT solutions provider, Software development company, Web development company, Custom software development company, Digital transformation company, Technology consulting company, Offshore development company, Remote development team">
   <!-- Open Graph tags -->
-  <meta property="og:title" content="CritiHome - Home Healthcare Services">
-  <meta property="og:description" content="Expert home healthcare and nursing services in Kolkata.">
+  <meta property="og:title" content="Digital Expansion Pvt Ltd | IT Services Company in India | Web, Salesforce & Shopify Experts | IT Services Company in Noida">
+  <meta property="og:description" content="Digital Expansion Pvt Ltd provides expert Web, Salesforce, Shopify & Mobile App development services in Noida, India for growing businesses.">
   <meta property="og:image" content=https://www.digitalexpansion.in/images/og-image.jpg">
   <meta property="og:url" content="https://www.digitalexpansion.in/">
   <!-- Twitter Card tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CritiHome - Home Healthcare Services">
-  <meta name="twitter:description" content="Expert home healthcare and nursing services in Kolkata.">
-  <meta name="twitter:image" content="https://www.critihome.in/images/og-image.jpg">
+  <meta name="twitter:title" content="Digital Expansion Pvt Ltd | IT Services Company in India | Web, Salesforce & Shopify Experts | IT Services Company in Noida">
+  <meta name="twitter:description" content="Digital Expansion Pvt Ltd provides expert Web, Salesforce, Shopify & Mobile App development services in Noida, India for growing businesses.">
+  <meta name="twitter:image" content="https://www.digitalexpansion.in/images/og-image.jpg">
   <!-- favicon -->
   <link rel="icon" href="<?= base_url('images/favicon.ico'); ?>" />
   <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url(); ?>public/images/apple-touch-icon.png">
@@ -58,6 +58,10 @@
     }
     .my-float {
       margin-top: 16px;
+    }
+    .main-wrapper {
+      width: 90%;
+      margin: 0 auto;
     }
   </style>
 
@@ -153,17 +157,11 @@
                   <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('about'); ?>">About</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="<?= base_url('blogs'); ?>">Blogs</a>
-                  </li>
                   <li class="nav-item active">
                     <a class="nav-link" href="<?= base_url('contact'); ?>">Contact</a>
                   </li>
-                  <li class="nav-item active">
-                    <a class="nav-link" href="<?= base_url('/career'); ?>">Career</a>
-                  </li>
                   <li class="nav-item">
-                    <a class="nav-link book-btn" href="javascript:void(0);" data-toggle="modal" data-target="#bookNowModal">Book Now</a>
+                    <a class="nav-link book-btn" href="javascript:void(0);" data-toggle="modal" data-target="#bookNowModal">Schedule a call</a>
                   </li>
                 </ul>
               </div>
@@ -270,14 +268,6 @@
                 </a>
               </li>
               <li>
-                <a href="<?= $base_url . 'blogs'; ?>" class="d-flex align-items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24">
-                    <path d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z" />
-                  </svg>
-                  <span>Blogs</span>
-                </a>
-              </li>
-              <li>
                 <a href="<?= $base_url . 'contact'; ?>" class="d-flex align-items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24">
                     <path d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z" />
@@ -290,7 +280,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24">
                     <path d="M7,24a1,1,0,0,1-.71-.29,1,1,0,0,1,0-1.42l8.17-8.17a3,3,0,0,0,0-4.24L6.29,1.71A1,1,0,0,1,7.71.29l8.17,8.17a5,5,0,0,1,0,7.08L7.71,23.71A1,1,0,0,1,7,24Z" />
                   </svg>
-                  <span>Book Now</span>
+                  <span>Schedule a Call</span>
                 </a>
               </li>
             </ul>
@@ -302,7 +292,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <p class=" mb-0">&copy; 2023 CritiHome. Al Rights Reseved.</p>
+            <p class=" mb-0">&copy; 2026 Digital Expansion Private Limited. All Rights Reserved.</p>
           </div>
         </div>
       </div>
@@ -324,10 +314,9 @@
             <div class="col-12">
               <div class="card px-0 pb-0 mt-3 mb-3">
                 <div class="text-center mb-4 mt-3"> <img src="<?= base_url('/images/horizontal_500x160.png'); ?>" alt="Logo" class="book-logo" /></div>
-                <h2 class="heading text-center">Book CritiHome's Medical Services at Home</h2>
-                <p class="para text-center">Please enter your details and we will reach out to you
-                  as
-                  soon as we can.
+                <h2 class="heading text-center">Schedule a call</h2>
+                <p class="para text-center">
+                  Please enter your details and we will reach out to you assoon as we can.
                 </p>
                 <form class="msform" id="save-booking">
                   <div class="form-card pr-5 pl-5">

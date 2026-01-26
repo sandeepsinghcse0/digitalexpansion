@@ -1,285 +1,257 @@
 <?= $this->extend('layout') ?>
 
 <?= $this->section('content') ?>
+
+<style>
+    .site-banner {
+        position: relative;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .site-banner::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.90), 0%, rgba(118, 75, 162, 0.70) 100%);
+        z-index: 2;
+    }
+
+    .banner-slider-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .banner-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .banner-slide.active {
+        opacity: 1;
+    }
+
+    .banner-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .banner-wrapper {
+        position: relative;
+        z-index: 3;
+        container: fluid;
+    }
+
+    .banner-desc {
+        position: relative;
+        z-index: 3;
+        color: white;
+    }
+
+    .banner-desc .child-1 {
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        opacity: 0.95;
+        margin-bottom: 10px;
+    }
+
+    .banner-desc .ban-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .banner-desc .ban-title span {
+        display: block;
+        color: rgba(255, 255, 255, 0.95);
+    }
+
+    .banner-desc .ban-shrt-desc {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        opacity: 0.95;
+        margin-bottom: 30px;
+        max-width: 600px;
+    }
+
+    .theme-red-dark-btn,
+    .theme-white-dark-btn {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+        cursor: pointer;
+    }
+
+    .theme-red-dark-btn {
+        background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        color: white;
+    }
+
+    .theme-red-dark-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 107, 107, 0.3);
+        color: white;
+    }
+
+    .theme-white-dark-btn {
+        background: transparent;
+        color: white;
+        border-color: white;
+    }
+
+    .theme-white-dark-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+    }
+
+    .banner-slider-dots {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 12px;
+        z-index: 4;
+    }
+
+    .slider-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .slider-dot.active {
+        background: white;
+        width: 32px;
+        border-radius: 6px;
+    }
+
+    .slider-dot:hover {
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    @media (max-width: 768px) {
+        .site-banner {
+            min-height: 400px;
+        }
+
+        .banner-desc .ban-title {
+            font-size: 1.8rem;
+        }
+
+        .banner-desc .ban-shrt-desc {
+            font-size: 0.95rem;
+        }
+
+        .theme-red-dark-btn,
+        .theme-white-dark-btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+    }
+</style>
+
 <!-- banner section start -->
 <section class="site-banner blue-bg">
-    <img class="ban-rect-1" src="<?= base_url('/images/icons/ban-rectangle-1.png'); ?>" alt="Rectangle">
-    <img class="ban-rect-2" src="<?= base_url('/images/icons/ban-rectangle-2.png'); ?>" alt="Rectangle">
-    <img class="ban-medi" src="<?= base_url('/images/icons/ban-medi.png'); ?>" alt="Medicine">
-    <img class="ban-triangle" src="<?= base_url('/images/icons/ban-triangle.png'); ?>" alt="Triangle">
-    <div class="container">
+    <div class="banner-slider-container">
+        <div class="banner-slide active" data-slide="0">
+            <img src="<?= base_url('/images/banner-img-1.png'); ?>" alt="Banner 1" />
+        </div>
+        <div class="banner-slide" data-slide="1">
+            <img src="<?= base_url('/images/banner-img-2.png'); ?>" alt="Banner 2" />
+        </div>
+        <div class="banner-slide" data-slide="2">
+            <img src="<?= base_url('/images/banner-img-3.png'); ?>" alt="Banner 3" />
+        </div>
+    </div>
+
+    <div class="container banner-wrapper">
         <div class="row">
             <div class="col-md-7 col-sm-12 col-12">
                 <div class="banner-desc" data-aos="fade-in" data-aos-duration="800" data-aos-delay="100">
-                    <p class="child-1">
-                        Highest level of services you can find to your doorstep.
+                    <h3>Digital Expansion Pvt Ltd</h3>
+                    <p class="">
+                        Your Trusted IT Partner for Web, Salesforce, Shopify & Mobile App Solutions.
                     </p>
-                    <h4 class="ban-title">
-                        Take Care of Your Health <span>At Your Home In Kolkata.</span>
-                    </h4>
-                    <p class="ban-shrt-desc">
-                    CritiHome is ready to respond with timely, trusted, and professional healthcare at home—because your health deserves care beyond hospital walls.
+                    <p class="">
+                        Your Vision, Our Expertise Together, Boundless Possibilities. 
                     </p>
                     <div class="d-flex flex-wrap">
-                        <a href="#care-plans-sec" class="theme-red-dark-btn mr-3">Explore Our Service</a>
+                        <a href="/services" class="theme-red-dark-btn mr-3">Explore Our Service</a>
                         <a href="/about" class="theme-white-dark-btn">Learn More</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-5 col-sm-12 col-12">
-                <img src="<?= base_url('/images/banner-img-1.png'); ?>" alt="Banner" class="img-fluid" />
-            </div>
         </div>
+    </div>
+
+    <!-- Slider Dots -->
+    <div class="banner-slider-dots">
+        <span class="slider-dot active" onclick="currentSlide(0)"></span>
+        <span class="slider-dot" onclick="currentSlide(1)"></span>
+        <span class="slider-dot" onclick="currentSlide(2)"></span>
     </div>
 </section>
 <!-- banner section end -->
-<!-- top services section start -->
-<section class="top-services position-relative" id="our-services">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-12 mt-3" data-aos="fade-in" data-aos-delay="0" data-aos-easing="linear">
-                <div class="e-servc-blk card shadow">
-                    <div class="card-body">
-                        <div class="serv-icn">
-                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                <path d="m12.021,12c3.309,0,6-2.691,6-6S15.33,0,12.021,0s-6,2.691-6,6,2.691,6,6,6Zm0-11c2.757,0,5,2.243,5,5s-2.243,5-5,5-5-2.243-5-5S9.265,1,12.021,1Zm4.479,13H7.5c-2.481,0-4.5,2.019-4.5,4.5v5.5h1v-5.5c0-1.93,1.57-3.5,3.5-3.5h.5v3.064c-.871.216-1.521.999-1.521,1.936,0,1.103.897,2,2,2s2-.897,2-2c0-.921-.63-1.691-1.479-1.922v-3.078h6v3.551c-1.14.232-2,1.242-2,2.449v3h1v-3c0-.827.673-1.5,1.5-1.5s1.5.673,1.5,1.5v3h1v-3c0-1.208-.86-2.217-2-2.449v-3.551h.5c1.93,0,3.5,1.57,3.5,3.5v5.5h1v-5.5c0-2.481-2.019-4.5-4.5-4.5Zm-7.021,6c0,.552-.448,1-1,1s-1-.448-1-1,.448-1,1-1,1,.448,1,1Z" />
-                            </svg>
-                        </div>
-                        <div class="serv-list">
-                            <h5>Doctors & Specialist</h5>
-                            <ul>
-                                <li>Doctors</li>
-                                <li>Physiotherapy</li>
-                                <li>Speech Therapy</li>
-                                <li>Audiology</li>
-                                <li>Dietician</li>
-                                <li>Critical Care Nurses & Attendent</li>
-                            </ul>
-                            <a class="btn theme-red-dark-btn mt-3" href="tel:+918420218585">
-                                <svg version="1.0" class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#fff" stroke="none">
-                                        <path d="M1285 4005 c-698 -612 -1271 -1117 -1272 -1122 -3 -9 171 -215 185
-                                                    -221 4 -1 31 19 60 44 l52 46 0 -1376 0 -1376 2250 0 2250 0 0 1376 0 1376 52
-                                                    -46 c29 -25 56 -45 59 -44 11 5 189 210 189 218 0 5 -135 127 -300 271 l-300
-                                                    263 0 528 0 528 -450 0 -449 0 -3 -132 -3 -131 -522 456 c-287 252 -523 457
-                                                    -525 456 -2 0 -574 -501 -1273 -1114z m1951 125 l674 -590 0 315 0 315 150 0
-                                                    150 0 0 -447 1 -448 149 -130 150 -129 0 -1358 0 -1358 -1950 0 -1950 0 0
-                                                    1358 0 1357 973 852 c534 468 973 852 975 852 2 1 307 -265 678 -589z" />
-                                        <path d="M2860 3151 l0 -151 35 0 c57 0 185 -29 255 -59 173 -72 329 -228 401
-                                                    -401 30 -70 59 -198 59 -255 l0 -35 151 0 152 0 -7 83 c-41 510 -455 924 -963
-                                                    964 l-83 6 0 -152z" />
-                                        <path d="M1559 3073 c-185 -189 -240 -257 -284 -357 -46 -105 -59 -172 -59
-                                                    -311 0 -120 3 -137 33 -224 17 -52 48 -122 68 -155 27 -46 190 -215 637 -664
-                                                    657 -660 662 -664 836 -723 88 -30 105 -33 225 -33 148 0 216 14 332 70 95 45
-                                                    186 120 370 306 l153 153 -425 425 -425 425 -62 -62 c-35 -33 -73 -66 -85 -72
-                                                    -28 -14 -98 -14 -126 0 -31 16 -266 249 -283 281 -17 32 -18 101 -3 131 6 12
-                                                    39 50 72 85 l62 62 -426 426 -425 425 -185 -188z m414 -461 l218 -218 -18 -39
-                                                    c-13 -30 -17 -68 -18 -155 0 -113 1 -117 38 -194 33 -70 54 -96 190 -231 133
-                                                    -133 162 -157 232 -191 78 -39 80 -39 195 -39 87 1 125 5 155 18 l39 18 221
-                                                    -221 220 -221 -85 -83 c-97 -94 -162 -130 -269 -148 -87 -15 -169 -3 -262 38
-                                                    -60 26 -105 68 -646 608 -511 508 -587 588 -618 647 -67 128 -70 276 -8 407
-                                                    23 49 173 222 192 222 3 0 104 -98 224 -218z" />
-                                        <path d="M2860 2550 c0 -128 2 -150 15 -150 9 0 34 -9 55 -20 39 -20 80 -79
-                                                    80 -115 0 -13 22 -15 151 -15 l152 0 -7 52 c-16 115 -67 212 -152 287 -71 63
-                                                    -185 110 -266 111 l-28 0 0 -150z" />
-                                    </g>
-                                </svg><span>Call For Home Visit</span>
-                            </a>
-                            <a href="javascript:void(0);" data-toggle="modal" data-target="#bookNowModal" class="btn theme-red-dark-btn mt-3">
-                                <span>Book Now</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12 mt-3" data-aos="fade-in" data-aos-delay="600" data-aos-easing="linear">
-                <div class="e-servc-blk card shadow">
-                    <div class="card-body">
-                        <div class="serv-icn">
-                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                <path d="m15,12.5V4.5c0-1.93-1.57-3.5-3.5-3.5h-7c-1.93,0-3.5,1.57-3.5,3.5v15c0,1.93,1.57,3.5,3.5,3.5h8c.276,0,.5.224.5.5s-.224.5-.5.5H4.5c-2.481,0-4.5-2.019-4.5-4.5V4.5C0,2.019,2.019,0,4.5,0h7c2.481,0,4.5,2.019,4.5,4.5v8c0,.276-.224.5-.5.5s-.5-.224-.5-.5Zm-8.5,1.5h-2c-.276,0-.5.224-.5.5s.224.5.5.5h2c.276,0,.5-.224.5-.5s-.224-.5-.5-.5Zm5,0h-2c-.276,0-.5.224-.5.5s.224.5.5.5h2c.276,0,.5-.224.5-.5s-.224-.5-.5-.5Zm-5,4h-2c-.276,0-.5.224-.5.5s.224.5.5.5h2c.276,0,.5-.224.5-.5s-.224-.5-.5-.5Zm5,0h-2c-.276,0-.5.224-.5.5s.224.5.5.5h2c.276,0,.5-.224.5-.5s-.224-.5-.5-.5Zm-3.5-8c.276,0,.5-.224.5-.5v-2h2c.276,0,.5-.224.5-.5s-.224-.5-.5-.5h-2v-2c0-.276-.224-.5-.5-.5s-.5.224-.5.5v2h-2c-.276,0-.5.224-.5.5s.224.5.5.5h2v2c0,.276.224.5.5.5Zm9,5.5c0-1.378,1.121-2.5,2.5-2.5s2.5,1.122,2.5,2.5-1.121,2.5-2.5,2.5-2.5-1.122-2.5-2.5Zm1,0c0,.827.673,1.5,1.5,1.5s1.5-.673,1.5-1.5-.673-1.5-1.5-1.5-1.5.673-1.5,1.5Zm5.984,7.875c-.504-1.956-2.39-3.375-4.484-3.375s-3.98,1.419-4.484,3.375c-.068.267.092.54.359.609.269.069.54-.093.609-.36.385-1.496,1.896-2.625,3.516-2.625s3.131,1.128,3.516,2.625c.059.226.262.375.484.375.041,0,.083-.005.125-.016.268-.069.428-.342.359-.609Z" />
-                            </svg>
-                        </div>
-                        <div class="serv-list">
-                            <h5>Special Services</h5>
-                            <ul>
-                                <li>Wound Dressing</li>
-                                <li>Wound Care</li>
-                                <li>Surgical Dressing</li>
-                                <li>Tracheeostoma Care</li>
-                                <li>IM/IV/SC Injections</li>
-                                <li>Floey's Catheter</li>
-                                <li>Ryle's Tube</li>
-                                <li>Sample Collection at Home</li>
-                                <li>Colostomy Care</li>
-                            </ul>
-                             <a class="btn theme-red-dark-btn mt-3" href="tel:+918420218585">
-                                <svg version="1.0" class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#fff" stroke="none">
-                                        <path d="M1285 4005 c-698 -612 -1271 -1117 -1272 -1122 -3 -9 171 -215 185
-                                                    -221 4 -1 31 19 60 44 l52 46 0 -1376 0 -1376 2250 0 2250 0 0 1376 0 1376 52
-                                                    -46 c29 -25 56 -45 59 -44 11 5 189 210 189 218 0 5 -135 127 -300 271 l-300
-                                                    263 0 528 0 528 -450 0 -449 0 -3 -132 -3 -131 -522 456 c-287 252 -523 457
-                                                    -525 456 -2 0 -574 -501 -1273 -1114z m1951 125 l674 -590 0 315 0 315 150 0
-                                                    150 0 0 -447 1 -448 149 -130 150 -129 0 -1358 0 -1358 -1950 0 -1950 0 0
-                                                    1358 0 1357 973 852 c534 468 973 852 975 852 2 1 307 -265 678 -589z" />
-                                        <path d="M2860 3151 l0 -151 35 0 c57 0 185 -29 255 -59 173 -72 329 -228 401
-                                                    -401 30 -70 59 -198 59 -255 l0 -35 151 0 152 0 -7 83 c-41 510 -455 924 -963
-                                                    964 l-83 6 0 -152z" />
-                                        <path d="M1559 3073 c-185 -189 -240 -257 -284 -357 -46 -105 -59 -172 -59
-                                                    -311 0 -120 3 -137 33 -224 17 -52 48 -122 68 -155 27 -46 190 -215 637 -664
-                                                    657 -660 662 -664 836 -723 88 -30 105 -33 225 -33 148 0 216 14 332 70 95 45
-                                                    186 120 370 306 l153 153 -425 425 -425 425 -62 -62 c-35 -33 -73 -66 -85 -72
-                                                    -28 -14 -98 -14 -126 0 -31 16 -266 249 -283 281 -17 32 -18 101 -3 131 6 12
-                                                    39 50 72 85 l62 62 -426 426 -425 425 -185 -188z m414 -461 l218 -218 -18 -39
-                                                    c-13 -30 -17 -68 -18 -155 0 -113 1 -117 38 -194 33 -70 54 -96 190 -231 133
-                                                    -133 162 -157 232 -191 78 -39 80 -39 195 -39 87 1 125 5 155 18 l39 18 221
-                                                    -221 220 -221 -85 -83 c-97 -94 -162 -130 -269 -148 -87 -15 -169 -3 -262 38
-                                                    -60 26 -105 68 -646 608 -511 508 -587 588 -618 647 -67 128 -70 276 -8 407
-                                                    23 49 173 222 192 222 3 0 104 -98 224 -218z" />
-                                        <path d="M2860 2550 c0 -128 2 -150 15 -150 9 0 34 -9 55 -20 39 -20 80 -79
-                                                    80 -115 0 -13 22 -15 151 -15 l152 0 -7 52 c-16 115 -67 212 -152 287 -71 63
-                                                    -185 110 -266 111 l-28 0 0 -150z" />
-                                    </g>
-                                </svg><span>Call For Home Visit</span>
-                            </a>
-                            <a href="javascript:void(0);" data-toggle="modal" data-target="#bookNowModal" class="btn theme-red-dark-btn mt-3">
-                                <span>Book Now</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12 mt-3" data-aos="fade-in" data-aos-delay="300" data-aos-easing="linear">
-                <div class="e-servc-blk card shadow">
-                    <div class="card-body">
-                        <div class="serv-icn">
-                            <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="512.000000pt" height="512.000000pt" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                                    <path d="M646 5104 c-42 -13 -73 -38 -189 -152 -166 -164 -191 -204 -190 -307 0 -97 20 -134 130 -246 l94 -97 -25 -50 c-54 -107 -56 -238 -6 -345 l22 -46 -55 -68 c-206 -256 -337 -567 -378 -896 -17 -141 -7 -434 20 -558 26 -119 54 -212 92 -306 23 -54 37 -74 58 -82 54 -23 108 21 98 78 -3 14 -19 66 -37 115 -60 168 -81 283 -87 482 -4 115 -1 213 6 265 29 207 110 445 206 606 60 102 165 243 179 243 6 0 96 -85 200 -189 l190 -190 -42 -59 c-192 -274 -246 -643 -138 -958 60 -177 175 -350 308 -464 l76 -65 -33 -28 c-42 -35 -88 -97 -196 -266 -47 -74 -90 -136 -96 -138 -30 -10 -242 195 -344 333 -74 100 -99 115 -148 89 -35 -17 -48 -62 -30 -97 19 -36 96 -136 167 -216 55 -62 153 -152 250 -229 l24 -19 -125 -194 -126 -195 -70 -18 c-165 -43 -295 -179 -330 -345 -17 -80 -14 -279 5 -334 17 -50 67 -108 117 -135 30 -17 136 -18 1827 -18 l1795 0 51 27 c64 34 128 105 148 165 32 93 13 239 -44 353 -43 86 -145 190 -229 234 -127 66 -117 66 -908 66 l-713 0 0 135 0 134 588 3 c579 3 588 3 627 25 131 70 160 225 77 403 -34 72 -140 178 -212 212 -99 46 -127 48 -736 48 l-575 0 -32 24 c-91 68 -215 106 -346 106 -84 0 -121 -6 -226 -35 -30 -8 -164 102 -241 200 -75 93 -143 226 -176 340 -20 68 -23 103 -23 240 0 137 3 172 23 240 26 93 99 245 139 293 l28 33 192 -193 193 -193 -15 -49 c-19 -62 -19 -80 1 -147 14 -48 31 -69 153 -192 75 -76 153 -148 175 -159 57 -29 136 -35 193 -13 40 15 99 69 370 338 177 177 324 319 326 316 3 -2 12 -40 22 -84 142 -658 821 -1073 1478 -906 427 110 756 439 874 878 25 90 27 114 27 293 1 173 -2 205 -23 285 -43 166 -142 371 -220 454 -33 35 -73 41 -109 15 -37 -25 -29 -73 24 -151 136 -198 190 -390 181 -643 -7 -216 -56 -371 -172 -545 -288 -433 -855 -594 -1322 -375 -340 159 -585 500 -610 848 l-6 84 121 121 c71 71 128 137 137 159 21 51 19 143 -4 194 -11 23 -36 60 -56 83 l-37 41 51 69 c140 188 348 325 601 393 116 32 372 32 494 -1 122 -32 224 -76 330 -144 50 -31 94 -57 98 -57 19 0 66 30 72 45 24 63 -31 117 -209 205 -200 99 -384 138 -599 127 -382 -20 -710 -202 -943 -526 -1 -2 -22 14 -47 37 -24 22 -58 48 -76 57 -47 24 -136 30 -187 12 l-41 -14 -484 484 c-443 444 -489 487 -554 519 -118 59 -267 56 -370 -7 l-30 -18 -85 85 c-46 47 -106 97 -134 111 -63 32 -150 39 -219 17z m148 -149 c17 -8 65 -49 106 -90 l75 -75 -190 -190 -190 -190 -82 82 c-140 139 -138 165 26 332 144 147 181 166 255 131z m638 -178 c24 -14 253 -236 511 -494 l467 -468 -420 -420 -420 -420 -476 475 c-328 328 -482 488 -495 515 -29 65 -33 115 -14 181 16 57 26 68 293 337 323 324 330 330 449 323 44 -3 75 -11 105 -29z m1256 -1001 c15 -8 78 -66 140 -129 108 -111 112 -117 112 -159 l0 -43 -504 -504 -504 -504 -43 6 c-38 5 -54 18 -160 123 -124 124 -146 156 -135 201 5 19 164 185 484 507 262 263 491 487 507 497 36 23 66 24 103 5z m-986 -2007 c153 -51 262 -168 303 -324 12 -46 15 -119 15 -327 l0 -268 -661 0 -661 0 14 23 c256 404 483 748 518 783 52 53 113 91 185 116 73 25 208 24 287 -3z m1480 -142 c98 -48 164 -142 175 -250 4 -42 2 -57 -15 -77 l-20 -25 -576 -3 -576 -2 0 67 c0 102 -25 191 -88 316 -2 4 232 6 520 5 l523 -3 57 -28z m459 -943 c135 -40 234 -140 274 -278 33 -113 9 -201 -66 -238 -32 -17 -138 -18 -1782 -18 l-1749 0 -29 29 c-29 29 -29 31 -29 143 0 172 36 262 129 324 86 56 -8 53 1657 54 1382 0 1546 -2 1595 -16z" />
-                                    <path d="M1411 1543 c-113 -56 -167 -192 -126 -314 58 -170 276 -230 414 -113 106 89 120 252 31 364 -71 89 -211 117 -319 63z m195 -157 c40 -40 45 -83 15 -132 -57 -93 -201 -47 -201 65 0 51 54 101 110 101 34 0 48 -6 76 -34z" />
-                                    <path d="M3780 3920 c-26 -12 -69 -46 -102 -83 l-57 -62 -103 0 c-118 -1 -161 -16 -218 -81 -53 -61 -63 -96 -56 -198 l6 -88 -74 -72 c-85 -82 -100 -116 -94 -216 4 -79 34 -132 101 -181 61 -44 67 -60 61 -159 -5 -79 -4 -89 23 -140 50 -98 161 -154 261 -132 54 13 88 5 115 -26 12 -14 41 -45 64 -69 107 -107 283 -88 372 41 37 54 71 67 137 55 110 -21 214 30 267 131 27 52 29 60 24 140 -7 99 -1 113 63 161 62 47 100 123 100 201 0 82 -20 122 -101 200 l-70 67 7 84 c6 73 4 90 -15 133 -26 59 -62 98 -116 127 -34 19 -54 22 -142 20 l-102 -2 -52 60 c-63 73 -113 100 -194 106 -46 3 -71 -1 -105 -17z m140 -140 c10 -5 34 -32 53 -59 25 -34 52 -57 92 -76 51 -26 63 -27 138 -22 134 9 163 -18 152 -138 -12 -121 12 -171 129 -271 29 -25 36 -38 36 -67 0 -51 -7 -63 -60 -101 -27 -19 -61 -57 -77 -83 -26 -44 -28 -56 -28 -148 0 -61 -5 -108 -12 -122 -18 -30 -68 -44 -123 -33 -95 18 -192 -21 -251 -103 -64 -88 -133 -88 -192 2 -50 75 -156 118 -250 100 -36 -6 -57 -5 -82 5 -48 21 -59 46 -51 128 13 123 -15 182 -132 279 -27 22 -32 34 -32 69 0 33 6 47 29 68 17 15 45 41 63 58 58 53 73 95 73 211 0 93 2 104 23 125 21 21 30 23 117 20 112 -4 162 13 216 73 82 91 87 95 119 95 17 0 40 -4 50 -10z" />
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="serv-list">
-                            <h5>Special Test</h5>
-                            <ul>
-                                <li>Portable X-RAY, Pathology</li>
-                                <li>Pathology</li>
-                                <li>EEG, NCV, ECG, ABG</li>
-                                <li>Sleep Test</li>
-                                <li>Polysomnography</li>
-                                <li>Hearing Test, Hearing Aid Trial</li>
-                            </ul>
-                            <a class="btn theme-red-dark-btn mt-3" href="tel:+918420218585">
-                                <svg version="1.0" class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#fff" stroke="none">
-                                        <path d="M1285 4005 c-698 -612 -1271 -1117 -1272 -1122 -3 -9 171 -215 185
-                                                    -221 4 -1 31 19 60 44 l52 46 0 -1376 0 -1376 2250 0 2250 0 0 1376 0 1376 52
-                                                    -46 c29 -25 56 -45 59 -44 11 5 189 210 189 218 0 5 -135 127 -300 271 l-300
-                                                    263 0 528 0 528 -450 0 -449 0 -3 -132 -3 -131 -522 456 c-287 252 -523 457
-                                                    -525 456 -2 0 -574 -501 -1273 -1114z m1951 125 l674 -590 0 315 0 315 150 0
-                                                    150 0 0 -447 1 -448 149 -130 150 -129 0 -1358 0 -1358 -1950 0 -1950 0 0
-                                                    1358 0 1357 973 852 c534 468 973 852 975 852 2 1 307 -265 678 -589z" />
-                                        <path d="M2860 3151 l0 -151 35 0 c57 0 185 -29 255 -59 173 -72 329 -228 401
-                                                    -401 30 -70 59 -198 59 -255 l0 -35 151 0 152 0 -7 83 c-41 510 -455 924 -963
-                                                    964 l-83 6 0 -152z" />
-                                        <path d="M1559 3073 c-185 -189 -240 -257 -284 -357 -46 -105 -59 -172 -59
-                                                    -311 0 -120 3 -137 33 -224 17 -52 48 -122 68 -155 27 -46 190 -215 637 -664
-                                                    657 -660 662 -664 836 -723 88 -30 105 -33 225 -33 148 0 216 14 332 70 95 45
-                                                    186 120 370 306 l153 153 -425 425 -425 425 -62 -62 c-35 -33 -73 -66 -85 -72
-                                                    -28 -14 -98 -14 -126 0 -31 16 -266 249 -283 281 -17 32 -18 101 -3 131 6 12
-                                                    39 50 72 85 l62 62 -426 426 -425 425 -185 -188z m414 -461 l218 -218 -18 -39
-                                                    c-13 -30 -17 -68 -18 -155 0 -113 1 -117 38 -194 33 -70 54 -96 190 -231 133
-                                                    -133 162 -157 232 -191 78 -39 80 -39 195 -39 87 1 125 5 155 18 l39 18 221
-                                                    -221 220 -221 -85 -83 c-97 -94 -162 -130 -269 -148 -87 -15 -169 -3 -262 38
-                                                    -60 26 -105 68 -646 608 -511 508 -587 588 -618 647 -67 128 -70 276 -8 407
-                                                    23 49 173 222 192 222 3 0 104 -98 224 -218z" />
-                                        <path d="M2860 2550 c0 -128 2 -150 15 -150 9 0 34 -9 55 -20 39 -20 80 -79
-                                                    80 -115 0 -13 22 -15 151 -15 l152 0 -7 52 c-16 115 -67 212 -152 287 -71 63
-                                                    -185 110 -266 111 l-28 0 0 -150z" />
-                                    </g>
-                                </svg><span>Call For Home Visit</span>
-                            </a>
-                            <a href="javascript:void(0);" data-toggle="modal" data-target="#bookNowModal" class="btn theme-red-dark-btn mt-3">
-                                <span>Book Now</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12 mt-3" data-aos="fade-in" data-aos-delay="900" data-aos-easing="linear">
-                <div class="e-servc-blk card shadow">
-                    <div class="card-body">
-                        <div class="serv-icn">
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                                    <path d="M2753 4419 c-33 -12 -43 -40 -43 -123 0 -69 2 -76 27 -96 32 -25 69 -20 96 12 19 23 24 128 8 171 -11 29 -57 48 -88 36z" />
-                                    <path d="M2286 4249 c-39 -31 -34 -65 20 -135 53 -70 83 -85 122 -63 20 11 28 24 30 51 3 31 -4 47 -39 93 -61 80 -86 91 -133 54z" />
-                                    <path d="M3159 4219 c-60 -65 -76 -101 -61 -135 16 -34 55 -50 87 -36 30 14 115 127 115 154 0 26 -44 68 -71 68 -15 0 -40 -19 -70 -51z" />
-                                    <path d="M2663 3966 c-156 -51 -260 -190 -271 -361 l-5 -85 -1027 0 c-1134 0 -1095 2 -1157 -62 -67 -69 -63 2 -63 -1173 0 -939 2 -1070 15 -1103 20 -47 50 -79 100 -105 37 -20 60 -22 269 -27 l229 -5 12 -40 c91 -307 471 -411 702 -192 60 56 93 109 118 185 l17 52 958 0 958 0 17 -52 c24 -77 56 -127 119 -186 226 -214 596 -117 698 183 l17 50 228 5 c210 5 231 7 269 27 51 27 90 72 104 121 8 25 10 175 8 457 l-3 420 -29 63 c-20 42 -47 80 -86 116 -58 53 -83 66 -281 143 l-97 38 -412 470 c-227 259 -433 491 -458 517 -74 76 -121 92 -293 96 l-146 4 -11 95 c-13 116 -44 184 -113 253 -73 73 -144 103 -254 107 -57 2 -105 -2 -132 -11z m224 -147 c85 -41 143 -141 143 -246 l0 -43 -250 0 -250 0 0 58 c0 99 64 199 150 236 53 23 155 20 207 -5z m585 -462 c21 -12 225 -236 476 -522 241 -275 446 -506 454 -513 9 -7 84 -39 167 -71 83 -33 168 -71 187 -86 20 -15 47 -50 60 -79 l24 -51 0 -402 0 -402 -26 -20 c-25 -20 -39 -21 -236 -21 -158 0 -209 3 -212 12 -46 164 -131 266 -266 320 -44 18 -75 23 -160 23 -98 0 -110 -2 -172 -32 -116 -55 -202 -156 -239 -280 l-12 -43 -957 0 -957 0 -12 42 c-37 125 -123 226 -239 281 -62 30 -74 32 -172 32 -85 0 -116 -5 -160 -23 -135 -54 -220 -156 -266 -319 -3 -10 -54 -13 -212 -13 -197 0 -211 1 -236 21 l-26 20 0 1055 c0 1041 0 1054 20 1074 20 20 33 20 1578 20 l1557 0 37 -23z m-2177 -1971 c106 -50 167 -147 168 -265 0 -164 -123 -286 -288 -285 -309 2 -397 426 -115 553 65 30 169 28 235 -3z m2765 3 c184 -83 230 -329 88 -471 -86 -86 -221 -108 -330 -55 -105 52 -162 143 -161 262 0 116 61 212 167 261 67 31 171 33 236 3z" />
-                                    <path d="M2954 3195 l-25 -25 3 -416 3 -416 24 -19 c22 -18 46 -19 546 -19 717 0 691 -34 308 407 -147 170 -298 344 -336 388 -118 137 -89 125 -308 125 -189 0 -190 0 -215 -25z m602 -402 c137 -158 262 -302 278 -320 l28 -33 -396 0 -396 0 0 320 0 320 118 0 118 0 250 -287z" />
-                                    <path d="M1254 3059 c-16 -18 -19 -40 -22 -150 l-4 -129 -124 0 c-119 0 -126 -1 -149 -25 -25 -24 -25 -26 -25 -208 0 -246 -7 -237 170 -237 l128 0 4 -129 c4 -182 -10 -171 238 -171 178 0 198 2 213 18 14 15 17 42 17 150 l0 132 129 0 c186 0 176 -14 176 235 0 249 10 235 -176 235 l-129 0 0 134 c0 177 15 166 -236 166 -181 0 -192 -1 -210 -21z m316 -253 c0 -172 -6 -166 172 -166 l128 0 0 -95 0 -95 -120 0 c-127 0 -167 -10 -175 -44 -3 -12 -6 -75 -8 -141 l-2 -120 -95 0 -95 0 -3 132 c-3 129 -3 132 -29 152 -23 19 -40 21 -149 21 l-124 0 0 95 0 95 130 0 c117 0 132 2 150 20 18 18 20 33 20 150 l0 130 100 0 100 0 0 -134z" />
-                                    <path d="M2025 3908 c-27 -15 -35 -28 -35 -59 0 -42 22 -60 90 -74 91 -20 126 -19 150 5 45 45 14 101 -66 118 -95 20 -119 22 -139 10z" />
-                                    <path d="M3416 3904 c-80 -16 -106 -35 -106 -79 0 -62 38 -75 157 -53 97 18 131 71 78 123 -27 28 -33 28 -129 9z" />
-                                </g>
-                            </svg>
-                        </div>
-                        <div class="serv-list">
-                            <h5>Emergency Service</h5>
-                            <ul>
-                                <li>Oxygen Concentrator</li>
-                                <li>O2 Cylinder</li>
-                                <li>Hospital Bed</li>
-                                <li>CPAP/bipap/ Portable Ventilator</li>
-                                <li>Mask & Accessories</li>
-                                <li>HFNO, IV Stand</li>
-                                <li>Suction Machine</li>
-                                <li>Carac Monitor</li>
-                                <li>Syringe Pump, IPC</li>
-                            </ul>
-                            <a class="btn theme-red-dark-btn mt-3" href="tel:+918420218585">
-                                <svg version="1.0" class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                    <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#fff" stroke="none">
-                                        <path d="M1285 4005 c-698 -612 -1271 -1117 -1272 -1122 -3 -9 171 -215 185
-                                                    -221 4 -1 31 19 60 44 l52 46 0 -1376 0 -1376 2250 0 2250 0 0 1376 0 1376 52
-                                                    -46 c29 -25 56 -45 59 -44 11 5 189 210 189 218 0 5 -135 127 -300 271 l-300
-                                                    263 0 528 0 528 -450 0 -449 0 -3 -132 -3 -131 -522 456 c-287 252 -523 457
-                                                    -525 456 -2 0 -574 -501 -1273 -1114z m1951 125 l674 -590 0 315 0 315 150 0
-                                                    150 0 0 -447 1 -448 149 -130 150 -129 0 -1358 0 -1358 -1950 0 -1950 0 0
-                                                    1358 0 1357 973 852 c534 468 973 852 975 852 2 1 307 -265 678 -589z" />
-                                        <path d="M2860 3151 l0 -151 35 0 c57 0 185 -29 255 -59 173 -72 329 -228 401
-                                                    -401 30 -70 59 -198 59 -255 l0 -35 151 0 152 0 -7 83 c-41 510 -455 924 -963
-                                                    964 l-83 6 0 -152z" />
-                                        <path d="M1559 3073 c-185 -189 -240 -257 -284 -357 -46 -105 -59 -172 -59
-                                                    -311 0 -120 3 -137 33 -224 17 -52 48 -122 68 -155 27 -46 190 -215 637 -664
-                                                    657 -660 662 -664 836 -723 88 -30 105 -33 225 -33 148 0 216 14 332 70 95 45
-                                                    186 120 370 306 l153 153 -425 425 -425 425 -62 -62 c-35 -33 -73 -66 -85 -72
-                                                    -28 -14 -98 -14 -126 0 -31 16 -266 249 -283 281 -17 32 -18 101 -3 131 6 12
-                                                    39 50 72 85 l62 62 -426 426 -425 425 -185 -188z m414 -461 l218 -218 -18 -39
-                                                    c-13 -30 -17 -68 -18 -155 0 -113 1 -117 38 -194 33 -70 54 -96 190 -231 133
-                                                    -133 162 -157 232 -191 78 -39 80 -39 195 -39 87 1 125 5 155 18 l39 18 221
-                                                    -221 220 -221 -85 -83 c-97 -94 -162 -130 -269 -148 -87 -15 -169 -3 -262 38
-                                                    -60 26 -105 68 -646 608 -511 508 -587 588 -618 647 -67 128 -70 276 -8 407
-                                                    23 49 173 222 192 222 3 0 104 -98 224 -218z" />
-                                        <path d="M2860 2550 c0 -128 2 -150 15 -150 9 0 34 -9 55 -20 39 -20 80 -79
-                                                    80 -115 0 -13 22 -15 151 -15 l152 0 -7 52 c-16 115 -67 212 -152 287 -71 63
-                                                    -185 110 -266 111 l-28 0 0 -150z" />
-                                    </g>
-                                </svg><span>Call For Home Visit</span>
-                            </a>
-                            <a href="javascript:void(0);" data-toggle="modal" data-target="#bookNowModal" class="btn theme-red-dark-btn mt-3">
-                                <span>Book Now</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- top services section end -->
+
+<script>
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.banner-slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+        // Remove active class from all slides and dots
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Add active class to current slide and dot
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+        currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+        showSlide(currentSlideIndex);
+    }
+
+    function currentSlide(index) {
+        currentSlideIndex = index;
+        showSlide(currentSlideIndex);
+    }
+
+    // Auto-rotate slides every 6 seconds
+    setInterval(nextSlide, 6000);
+</script>
+
 <!-- about us section start -->
 <section class="about-sec position-relative pt-50 pb-50">
     <div class="container">
@@ -289,56 +261,17 @@
             </div>
             <div class="col-md-7 col-sm-12 col-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
                 <div class="h-about position-relative">
-                    <img class="blue-star" src="<?= base_url('/images/icons/blue-star.png'); ?>" alt="star">
-                    <img class="red-star" src="<?= base_url('/images/icons/red-star.png'); ?>" alt="star">
                     <h2 class="title">
                         <span class="t-child-1">About us</span>
-                        Medical services & diagnostics
-                        <span class="t-child-2">Committed To Delivering High Quality Medical & Diagnostics
+                        <span class="t-child-2">Committed To Delivering High Quality Solutions
                             Services!</span>
                     </h2>
                     <p>
-                    CritiHome is ready to respond with timely, trusted, and professional healthcare at home—because your health deserves care beyond hospital walls.
+                        Digital Expansion Pvt Ltd is a leading IT services company in India, delivering end-to-end digital solutions that help businesses scale efficiently and sustainably. Based in Noida, we specialize in Web Development, Salesforce solutions, Shopify development, and Mobile Application Development, serving startups, SMEs, and enterprises across industries.
+                        With a strong focus on quality, performance, and scalability, our team designs and builds secure, user-centric digital products that drive real business impact. From Salesforce CRM and Salesforce Commerce Cloud implementations to custom web applications, Shopify eCommerce stores, and mobile apps, we combine technical expertise with strategic thinking to deliver measurable results.
+                        At Digital Expansion, we believe technology should simplify operations, enhance customer experiences, and accelerate growth. Our agile development approach, transparent communication, and long-term support model make us a trusted IT partner for businesses looking to transform digitally.
+                        Partner with Digital Expansion Pvt Ltd to turn your digital vision into powerful, future-ready solutions. 
                     </p>
-                    <p>OUR GOAL IS TO IMPROVE QUALITY,
-MAXIMIZE OUTCOMES AND REDUCE RE-HOSPITALISATION AND COST THROUGH A PATIENT-CENTERED DOMICILIARY
-MODEL.</p>
-<p>WE ARE INNOVATIVE AND HAVE A COMMON DREAM OF CHANGING HEALTHCARE FOR THE BETTER WE ARE PROVIDING PERSONALIZED SERVICE TO PATIENTS.
-WE ARE THE FUTURE OF BETTER HEALTH CARE.
-</p>
-                    <ul>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                            </svg>
-                            Ambulance Services
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                            </svg>
-                            On call Doctors
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                            </svg>
-                            Rehablitation
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                            </svg>
-                            24/7 Medical Services
-                        </li>
-                        <li>
-                            <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                <path d="m17.588,8.584l.703.71-6.039,5.982c-.483.479-1.121.719-1.758.719-.633,0-1.266-.236-1.749-.709l-3.035-2.991.701-.712,3.034,2.99c.581.568,1.524.565,2.104-.007l6.039-5.982Zm6.412,3.416c0,6.617-5.383,12-12,12S0,18.617,0,12,5.383,0,12,0s12,5.383,12,12Zm-1,0c0-6.065-4.935-11-11-11S1,5.935,1,12s4.935,11,11,11,11-4.935,11-11Z" />
-                            </svg>
-                            Sample Collection
-                        </li>
-                    </ul>
-                    <a href="/about" class="theme-red-dark-btn">Learn More</a>
                 </div>
             </div>
         </div>
@@ -346,269 +279,6 @@ WE ARE THE FUTURE OF BETTER HEALTH CARE.
 </section>
 <!-- about us section end -->
 <!-- Long term care section end -->
-<section class="care-plans-sec grey-bg pt-50 pb-50" id="care-plans-sec">
-    <div class="container">
-        <div class="row">
-            <div class="col-12" data-aos="fade-up" data-aos-delay="100" data-aos-easing="linear">
-                <h2 class="title text-center">
-                    Long Term Care Plans
-                    <span class="t-child-2">
-                        Our Partnership Programs nurture lasting relationships by
-                        upholding the dignity of those receiving care as well as
-                        supporting those who give care. We provide expert medical
-                        supervision with compassionate care over an extended period of
-                        time at home and our plans encompass personalised healthcare
-                        services, including nurse and physician visits.
-                    </span>
-                </h2>
-            </div>
-            <div class="col-md-8 col-sm-12 col-12" data-aos="fade-up" data-aos-delay="400" data-aos-easing="linear">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 col-6 mt-4">
-                        <div class="ech-care-plan h-100">
-                            <div class="care-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 53.000000 117.000000">
-                                    <g transform="translate(0.000000,117.000000) scale(0.100000,-0.100000)" stroke="none">
-                                        <path d="M234 1155 c3 -9 9 -64 12 -124 9 -138 -4 -195 -57 -254 -21 -25 -43 -57 -49 -71 -16 -43 -12 -101 8 -118 27 -24 79 -48 103 -48 42 0 14 -8 -65 -19 -44 -6 -85 -16 -91 -21 -18 -15 -26 -69 -14 -91 7 -14 7 -19 -2 -17 -38 9 -79 -145 -79 -294 0 -97 0 -98 25 -98 20 0 26 7 35 43 6 23 20 74 31 112 10 39 22 100 26 135 10 95 20 49 28 -133 l7 -157 69 0 68 0 10 38 c6 20 18 82 27 137 9 55 28 132 41 170 13 39 27 81 29 95 8 37 -22 69 -76 79 -43 8 -44 9 -10 10 43 2 53 8 85 52 l26 34 -6 -55 c-5 -45 -2 -61 14 -87 36 -58 60 -42 85 53 25 96 16 204 -18 217 -22 9 -47 -16 -56 -53 -7 -29 -8 -23 -9 36 -1 39 -10 113 -21 165 -11 52 -22 126 -26 164 -10 122 -4 115 -85 115 -60 0 -70 -2 -65 -15z" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="care-shrt-desc">
-                                <h5>Ortho Rehab</h5>
-                                <p>
-                                    Total Knee Replacement, Total Hip Replacement & Spine
-                                    Surgery
-                                </p>
-                                <a href="javascript:void(0);" onclick="_setServiceId(1)" data-toggle="modal" data-target="#bookNowModal">Book Now
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-6 mt-4">
-                        <div class="ech-care-plan h-100">
-                            <div class="care-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 71.000000 98.000000">
-                                    <g transform="translate(0.000000,98.000000) scale(0.100000,-0.100000)" stroke="none">
-                                        <path d="M340 971 l-45 -6 -1 -42 c-1 -47 -21 -80 -38 -63 -14 14 -109 13 -124 -2 -7 -7 -12 -21 -12 -32 0 -14 -13 -28 -37 -41 -40 -21 -49 -40 -38 -82 5 -22 10 -25 41 -21 31 4 34 2 32 -16 -4 -22 -5 -22 -49 -11 -38 9 -63 -18 -56 -62 3 -18 1 -35 -4 -38 -5 -4 -9 -20 -9 -37 0 -21 6 -31 19 -35 14 -4 20 -18 25 -66 4 -40 16 -79 37 -115 27 -48 29 -60 24 -107 -10 -73 -1 -92 46 -106 41 -13 89 -1 89 21 0 6 18 1 41 -10 60 -31 274 -100 309 -100 70 0 120 115 120 274 0 110 -19 183 -61 230 -29 33 -29 35 -9 41 30 9 25 69 -6 73 -16 2 -20 9 -17 26 3 13 -2 28 -11 35 -20 17 -20 31 -1 31 24 0 40 45 27 75 -10 22 -18 25 -60 25 -42 0 -50 3 -65 29 -10 18 -15 40 -12 57 6 33 1 43 -37 67 -28 17 -40 18 -118 8z m106 -134 c16 -14 24 -29 20 -35 -11 -17 -36 -15 -36 4 0 21 -23 13 -34 -12 -5 -12 -19 -25 -30 -30 -12 -5 -25 -23 -31 -40 -27 -81 -62 -89 -72 -17 -14 109 107 195 183 130z m-226 -91 c0 -81 -1 -84 -25 -88 l-25 -5 0 88 c0 88 0 89 25 89 25 0 25 -1 25 -84z m310 -10 c-73 -24 -99 -52 -107 -114 -3 -23 -8 -42 -12 -42 -3 0 -21 9 -39 20 l-32 20 20 37 c11 21 20 44 20 52 0 11 5 9 21 -5 16 -13 23 -15 26 -7 12 34 42 57 84 63 78 11 88 -2 19 -24z m-415 4 c-3 -5 -12 -10 -18 -10 -7 0 -6 4 3 10 19 12 23 12 15 0z m445 -50 c-8 -5 -22 -10 -30 -10 -13 0 -13 1 0 10 8 5 22 10 30 10 13 0 13 -1 0 -10z m-15 -82 c14 -16 25 -34 25 -39 0 -5 -20 -9 -45 -9 -46 0 -67 18 -58 50 3 8 6 20 8 27 6 18 43 3 70 -29z m-270 0 c14 -6 25 -17 25 -24 0 -21 -50 -73 -96 -100 -24 -14 -60 -45 -80 -67 l-36 -42 4 66 c5 78 36 136 89 162 41 20 60 21 94 5z m195 -114 c0 -11 -11 -31 -24 -43 -30 -28 -50 -78 -35 -87 6 -3 11 -4 12 -3 17 32 27 45 46 58 l24 15 -7 -59 c-16 -149 -18 -215 -7 -215 6 0 11 11 11 24 0 35 22 126 31 126 3 0 12 -13 18 -29 11 -26 47 -51 73 -51 7 0 0 12 -14 28 -36 38 -66 116 -71 190 -5 60 -4 62 18 62 72 0 133 -131 122 -264 -8 -94 -23 -141 -55 -176 l-27 -30 -141 49 c-160 54 -217 89 -275 166 -48 64 -47 86 6 143 33 35 34 36 35 13 0 -13 10 -39 22 -59 12 -19 27 -51 34 -70 16 -47 40 -57 31 -13 -4 17 -5 31 -3 31 2 0 16 -18 30 -41 15 -22 30 -38 33 -36 12 13 -21 77 -62 120 -59 60 -59 85 0 148 25 26 45 52 45 57 0 4 29 -1 65 -12 53 -17 65 -25 65 -42z m-270 -356 c0 -5 -10 -8 -22 -6 -17 2 -24 11 -26 33 l-4 30 26 -24 c14 -14 26 -29 26 -33z" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="care-shrt-desc">
-                                <h5>Heart Rehab</h5>
-                                <p>Post Cardiac Surgery Care</p>
-                                <a href="javascript:void(0);" onclick="_setServiceId(2)" data-toggle="modal" data-target="#bookNowModal">Book Now
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-6 mt-4">
-                        <div class="ech-care-plan h-100">
-                            <div class="care-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 98.000000 95.000000">
-                                    <g transform="translate(0.000000,95.000000) scale(0.100000,-0.100000)" stroke="none">
-                                        <path d="M351 940 c-13 -6 -37 -21 -53 -35 -16 -14 -38 -25 -49 -25 -30 0 -99 -38 -131 -73 -29 -32 -58 -110 -58 -155 0 -14 -12 -41 -27 -60 -28 -38 -40 -105 -29 -166 8 -44 50 -94 93 -112 28 -12 33 -19 33 -47 0 -55 74 -107 152 -107 l28 0 -6 -80 -7 -80 51 0 50 0 27 69 c27 72 65 132 118 188 24 26 39 33 67 33 93 0 201 60 240 133 13 24 37 52 54 61 17 9 40 29 51 44 24 33 32 130 15 172 -13 31 -73 90 -91 90 -6 0 -31 22 -57 48 -55 56 -116 78 -188 68 -38 -5 -52 -2 -78 17 -24 17 -47 22 -106 24 -41 2 -86 -2 -99 -7z m145 -79 c23 -10 49 -29 57 -42 16 -22 16 -22 56 -4 49 22 105 15 135 -15 20 -20 20 -21 3 -32 -11 -5 -28 -21 -40 -34 -27 -31 -57 -30 -87 1 -39 42 -78 29 -66 -21 8 -30 60 -64 99 -64 22 0 27 -5 27 -24 0 -32 26 -53 48 -39 11 7 17 24 17 51 0 68 50 101 108 70 23 -12 46 -37 47 -50 0 -17 -50 -7 -60 12 -6 12 -21 20 -35 20 -21 0 -25 -5 -25 -28 0 -35 34 -69 78 -78 26 -5 30 -9 21 -20 -6 -8 -25 -18 -42 -22 -24 -6 -33 -16 -40 -42 l-9 -35 -20 28 c-39 53 -138 86 -152 51 -7 -19 10 -44 30 -44 31 0 6 -35 -30 -41 -29 -6 -43 -34 -26 -54 18 -22 66 -11 103 24 l29 26 -4 -29 c-2 -23 -10 -32 -38 -42 -63 -22 -120 -17 -169 16 -24 17 -52 30 -61 30 -34 0 -40 57 -10 85 28 25 22 59 -9 63 -14 2 -33 15 -44 28 -38 49 -85 17 -54 -36 9 -15 18 -51 20 -79 l4 -51 -36 -6 c-20 -3 -53 -17 -74 -31 -67 -42 -132 -29 -162 32 -20 43 -19 53 5 93 20 33 55 53 77 45 19 -8 16 -21 -13 -49 -28 -29 -29 -67 -1 -72 11 -2 32 11 52 32 31 33 34 34 40 16 8 -24 50 -27 59 -4 17 45 -56 128 -125 139 -40 7 -41 8 -36 41 7 43 40 90 78 109 28 15 29 15 29 -10 0 -17 -8 -29 -25 -37 -32 -14 -42 -45 -22 -66 14 -14 18 -13 41 1 23 16 25 16 31 -3 7 -23 50 -28 58 -6 3 7 -2 34 -10 60 -15 44 -15 51 1 82 11 24 30 41 59 54 52 24 62 24 113 1z m-51 -515 c41 -18 43 -25 12 -54 -53 -50 -167 -68 -228 -37 -24 13 -28 19 -19 35 22 41 103 37 122 -6 9 -19 18 -24 37 -22 34 4 39 33 12 69 l-22 29 26 0 c14 0 41 -7 60 -14z" />
-                                        <path d="M413 779 c5 -36 2 -44 -20 -64 -34 -28 -25 -50 23 -59 80 -16 114 -65 96 -139 -9 -33 -8 -45 3 -56 31 -32 65 15 65 92 0 54 -27 107 -67 132 -27 17 -32 26 -33 58 0 52 -15 77 -47 77 -24 0 -25 -2 -20 -41z" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="care-shrt-desc">
-                                <h5>Neuro Rehab</h5>
-                                <p>Stroke, Parkinson’s, Dementia, Post Brain and Spinal Surgery</p>
-                                <a href="javascript:void(0);" onclick="_setServiceId(3)" data-toggle="modal" data-target="#bookNowModal">Book Now
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-6 mt-4">
-                        <div class="ech-care-plan h-100">
-                            <div class="care-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 100.000000 92.000000">
-                                    <g transform="translate(0.000000,92.000000) scale(0.100000,-0.100000)" stroke="none">
-                                        <path d="M450 702 l0 -219 -68 -47 -68 -47 -43 16 c-24 8 -47 15 -51 15 -4 0 -12 -19 -19 -41 -13 -44 -6 -58 29 -59 8 0 -2 -16 -25 -40 l-39 -40 29 -30 c16 -16 34 -30 41 -30 6 0 37 27 67 60 31 33 59 60 63 60 15 0 -3 -112 -22 -137 -40 -53 -70 -67 -150 -71 -101 -6 -108 1 -101 93 7 92 31 183 72 272 34 73 106 163 132 163 15 0 52 -73 53 -105 0 -11 4 -26 9 -34 8 -12 13 -12 35 3 23 15 26 23 26 79 0 79 -31 131 -86 146 -59 16 -94 3 -154 -58 -104 -105 -180 -313 -180 -493 0 -89 0 -90 34 -124 l34 -34 108 0 c126 0 172 17 227 81 44 51 57 97 57 205 0 78 2 91 20 102 16 10 24 10 40 0 18 -11 20 -24 20 -108 0 -111 24 -176 81 -224 55 -47 89 -56 205 -56 l106 0 34 34 c34 34 34 35 34 124 0 180 -76 388 -180 493 -64 64 -107 79 -163 56 -51 -22 -77 -71 -77 -145 0 -55 3 -63 26 -78 22 -15 27 -15 35 -3 5 8 9 23 9 34 1 32 38 105 53 105 26 0 98 -90 132 -163 41 -89 65 -180 72 -272 7 -92 0 -99 -101 -93 -80 4 -110 18 -150 71 -19 25 -37 137 -22 137 4 0 32 -27 63 -60 30 -33 61 -60 67 -60 7 0 25 14 41 30 l29 30 -39 40 c-23 24 -33 40 -25 40 35 1 42 15 29 59 -7 22 -15 41 -19 41 -4 0 -27 -7 -51 -15 l-43 -16 -68 47 -68 47 0 219 0 218 -50 0 -50 0 0 -218z" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="care-shrt-desc">
-                                <h5>Lung Rehab</h5>
-                                <p>Asthma and Chronic Obstructive Pulmonary Disease</p>
-                                <a href="javascript:void(0);" onclick="_setServiceId(4)" data-toggle="modal" data-target="#bookNowModal">Book Now
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-6 mt-4">
-                        <div class="ech-care-plan h-100">
-                            <div class="care-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 69.000000 101.000000">
-                                    <g transform="translate(0.000000,101.000000) scale(0.100000,-0.100000)" stroke="none">
-                                        <path d="M235 996 c-17 -7 -45 -29 -62 -49 -86 -98 -62 -237 51 -308 l29 -18 -106 -50 c-136 -63 -149 -81 -145 -197 3 -69 8 -90 40 -156 21 -42 38 -86 38 -98 0 -37 31 -90 63 -106 23 -13 55 -15 146 -13 104 4 121 7 162 31 53 31 116 97 152 159 36 62 87 236 87 296 0 118 -112 184 -230 137 -57 -23 -72 -5 -23 27 113 74 110 257 -5 330 -38 24 -56 29 -106 29 -34 -1 -75 -7 -91 -14z m358 -428 c25 -13 57 -68 57 -99 0 -39 -40 -92 -78 -104 -29 -8 -32 -13 -32 -50 -1 -126 -162 -275 -298 -275 -46 0 -58 4 -83 29 -34 35 -36 60 -9 117 39 80 146 164 248 195 38 11 42 15 36 33 -41 114 55 207 159 154z" />
-                                        <path d="M282 298 c-26 -26 -7 -115 32 -147 12 -10 21 -9 48 5 84 42 119 116 62 130 -15 4 -38 3 -53 -2 -20 -7 -30 -5 -43 8 -21 21 -30 22 -46 6z" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="care-shrt-desc">
-                                <h5>Mother & Baby Care</h5>
-                                <p>Post natal care & support for Mother & Baby</p>
-                                <a href="javascript:void(0);" onclick="_setServiceId(5)" data-toggle="modal" data-target="#bookNowModal">Book Now
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-6 mt-4">
-                        <div class="ech-care-plan h-100">
-                            <div class="care-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 74.000000 116.000000">
-                                    <g transform="translate(0.000000,116.000000) scale(0.100000,-0.100000)" stroke="none">
-                                        <path d="M289 1131 c-42 -42 -42 -110 0 -152 23 -23 38 -29 71 -29 52 0 76 13 95 50 19 37 19 73 0 110 -19 37 -43 50 -95 50 -33 0 -48 -6 -71 -29z" />
-                                        <path d="M172 905 c-67 -73 -112 -166 -119 -245 -3 -35 2 -125 12 -208 l18 -147 -42 -108 c-42 -109 -50 -164 -29 -185 17 -17 53 -15 70 6 18 20 62 135 95 242 l22 75 0 -152 c1 -124 4 -154 17 -167 21 -22 50 -20 75 5 20 20 21 30 17 177 l-3 157 -39 78 c-34 70 -38 84 -33 130 4 29 14 79 25 111 l18 60 21 -36 c12 -20 42 -48 67 -63 25 -15 46 -30 46 -35 0 -4 -18 -125 -40 -269 -47 -304 -48 -331 -21 -331 21 0 26 11 36 83 l6 47 144 0 c161 0 148 7 160 -82 5 -39 10 -48 26 -48 16 0 19 7 19 43 0 58 -68 505 -82 540 -11 28 -53 57 -82 57 -23 0 -148 68 -178 97 -17 16 -38 57 -53 103 -46 139 -91 155 -173 65z m473 -521 c14 -89 25 -171 25 -183 0 -20 -4 -21 -130 -21 -96 0 -132 3 -135 13 -3 7 7 93 22 192 l28 180 46 -3 c33 -3 49 1 59 13 12 15 15 14 36 -7 19 -19 27 -50 49 -184z" />
-                                    </g>
-                                </svg>
-                            </div>
-                            <div class="care-shrt-desc">
-                                <h5>Elder Care</h5>
-                                <p>Long term partnership plans for geriatric care.</p>
-                                <a href="javascript:void(0);" onclick="_setServiceId(6)" data-toggle="modal" data-target="#bookNowModal">Book Now
-                                    <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                        <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-sm-12 col-12" data-aos="fade-up" data-aos-delay="700" data-aos-easing="linear">
-                <div class="more-care-plans-wrap">
-                    <a href="javascript:void(0);" onclick="_setServiceId(7)" data-toggle="modal" data-target="#bookNowModal" class="mt-4 more-plan-list">
-                        <div class="d-flex align-items-center mr-3">
-                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                <path d="m21.5,19.017h-.5v-6c0-4.963-4.037-9-9-9S3,8.054,3,13.017v6h-.5c-1.379,0-2.5,1.121-2.5,2.5v2.483h24v-2.483c0-1.379-1.121-2.5-2.5-2.5ZM4,13.017c0-4.411,3.589-8,8-8s8,3.589,8,8v6H4v-6Zm19,9.983H1v-1.483c0-.827.673-1.5,1.5-1.5h19c.827,0,1.5.673,1.5,1.5v1.483ZM2.511,6.127L.159,3.967l.676-.736,2.352,2.16-.676.736Zm4.119-2.901L5.373.495l.908-.418,1.257,2.73-.908.418Zm14.945,2.839l-.693-.721,2.273-2.186.693.721-2.273,2.186Zm-4.199-2.851l-.92-.395L17.626.089l.92.395-1.17,2.73Zm-5.376,5.803v1c-1.654,0-3,1.346-3,3h-1c0-2.206,1.794-4,4-4Z" />
-                            </svg>
-                            <h5>Critical Care</h5>
-                        </div>
-                        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                            <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                        </svg>
-                    </a>
-                    <a href="javascript:void(0);" onclick="_setServiceId(8)" data-toggle="modal" data-target="#bookNowModal" class="mt-4 more-plan-list">
-                        <div class="d-flex align-items-center mr-3">
-                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                                    <path d="M1490 5106 c-337 -75 -583 -300 -696 -636 l-29 -85 -3 -1305 c-3 -1360 -3 -1356 40 -1490 85 -266 305 -490 568 -582 115 -40 184 -48 411 -48 l219 0 0 -460 c0 -447 1 -461 20 -480 19 -19 33 -20 540 -20 507 0 521 1 540 20 19 19 20 33 20 480 l0 460 219 0 c227 0 296 8 411 48 301 105 527 365 595 685 22 102 22 2592 0 2694 -68 320 -294 580 -595 685 -140 49 -126 48 -1198 47 -753 -1 -1021 -4 -1062 -13z m2132 -173 c275 -77 472 -275 551 -551 l22 -77 0 -1265 0 -1265 -22 -77 c-63 -220 -206 -396 -399 -492 -128 -63 -200 -77 -441 -83 l-213 -6 0 242 0 241 100 0 c87 0 103 3 120 20 27 27 27 93 0 120 -20 20 -33 20 -780 20 -747 0 -760 0 -780 -20 -27 -27 -27 -93 0 -120 17 -17 33 -20 120 -20 l100 0 0 -241 0 -242 -212 6 c-168 4 -229 10 -290 26 -270 71 -472 272 -551 549 l-22 77 0 1265 0 1265 22 77 c90 316 342 534 657 568 39 4 492 7 1006 6 925 -2 936 -2 1012 -23z m-662 -4053 l0 -720 -400 0 -400 0 0 720 0 720 400 0 400 0 0 -720z" />
-                                    <path d="M1460 4420 c-20 -20 -20 -33 -20 -1000 0 -967 0 -980 20 -1000 20 -20 33 -20 1100 -20 1067 0 1080 0 1100 20 20 20 20 33 20 1000 0 967 0 980 -20 1000 -20 20 -33 20 -1100 20 -1067 0 -1080 0 -1100 -20z m2060 -1000 l0 -860 -960 0 -960 0 0 860 0 860 960 0 960 0 0 -860z" />
-                                    <path d="M2468 3979 c-32 -33 -92 -111 -133 -172 -207 -311 -264 -594 -159 -787 38 -69 121 -145 201 -183 130 -61 313 -47 427 33 101 70 166 171 186 288 39 233 -100 579 -329 820 -53 55 -64 62 -98 62 -33 0 -44 -7 -95 -61z m184 -268 c62 -91 131 -234 153 -321 27 -100 25 -214 -3 -272 -43 -88 -151 -158 -242 -158 -93 0 -198 69 -242 158 -65 133 11 394 184 631 l61 83 19 -23 c10 -13 42 -57 70 -98z" />
-                                    <path d="M2455 781 c-87 -40 -135 -120 -135 -223 1 -142 97 -238 240 -238 144 0 240 96 240 240 0 104 -53 187 -142 224 -52 22 -153 20 -203 -3z m155 -171 c43 -43 11 -120 -50 -120 -38 0 -70 32 -70 70 0 38 32 70 70 70 17 0 39 -9 50 -20z" />
-                                </g>
-                            </svg>
-                            <h5>Diabetes Care</h5>
-                        </div>
-                        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                            <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                        </svg>
-                    </a>
-                    <a href="javascript:void(0);" onclick="_setServiceId(9)" data-toggle="modal" data-target="#bookNowModal" class="mt-4 more-plan-list">
-                        <div class="d-flex align-items-center mr-3">
-                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 512.000000 512.000000">
-                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                                    <path d="M991 5025 c-321 -70 -581 -268 -721 -549 -79 -160 -102 -251 -108 -439 -5 -176 7 -301 44 -447 21 -84 22 -95 8 -103 -82 -46 -135 -141 -135 -244 0 -63 6 -86 69 -242 38 -95 81 -188 95 -206 14 -18 47 -43 72 -55 38 -18 57 -21 113 -17 37 3 76 8 87 11 18 6 27 -10 82 -146 34 -84 72 -180 83 -213 22 -63 39 -203 40 -317 l0 -67 -42 -11 c-163 -41 -397 -144 -550 -242 -110 -70 -108 -66 -52 -143 26 -36 49 -65 51 -65 1 0 35 22 75 49 163 110 360 197 547 242 107 25 131 43 131 95 l0 37 23 -34 c12 -18 38 -44 56 -56 62 -42 146 -34 533 52 186 41 340 75 342 75 2 0 6 -20 8 -45 7 -57 46 -117 100 -152 41 -27 45 -28 213 -31 153 -3 177 -1 225 17 l53 20 211 -60 c206 -59 214 -60 311 -57 85 4 108 8 153 31 66 35 121 83 149 134 l22 39 -74 37 -75 37 -41 -45 c-41 -45 -91 -69 -131 -63 -17 2 -2 17 73 70 162 116 386 216 597 268 32 8 64 30 122 84 218 200 493 345 784 413 61 14 115 29 119 33 15 13 -23 160 -40 160 -28 0 -248 -59 -338 -90 -124 -44 -342 -158 -450 -235 -103 -74 -74 -72 -317 -24 -240 47 -469 38 -650 -27 -83 -30 -185 -80 -240 -117 l-36 -25 -56 84 c-37 56 -61 82 -69 78 -37 -22 -127 -85 -127 -90 0 -3 22 -37 49 -77 74 -111 91 -149 91 -209 -1 -92 -51 -169 -134 -203 -22 -9 -81 -19 -131 -22 -146 -9 -195 8 -195 66 0 55 57 79 208 88 l102 6 0 79 0 80 -138 -4 c-138 -3 -140 -3 -213 -41 -52 -26 -87 -37 -118 -37 -24 0 -197 -34 -383 -75 -314 -70 -418 -86 -418 -67 0 4 163 72 363 151 199 79 366 148 371 152 7 6 -34 138 -49 157 -2 2 -179 -68 -395 -154 -434 -174 -442 -175 -448 -103 -4 47 7 56 164 127 228 105 483 198 741 272 l71 20 -20 73 c-11 39 -24 76 -28 81 -19 20 -498 -140 -747 -250 -67 -30 -130 -54 -140 -54 -48 0 -59 71 -19 111 34 34 276 157 418 213 64 25 188 66 275 91 87 26 163 48 170 50 9 3 6 23 -9 77 -11 40 -24 77 -28 81 -16 18 -419 -112 -587 -189 -65 -29 -74 -31 -88 -18 -20 21 -19 67 3 86 32 29 297 156 373 179 62 19 98 23 219 23 204 1 220 -5 371 -150 156 -150 174 -159 314 -159 96 0 137 6 315 47 485 111 891 161 1471 179 474 15 544 5 644 -96 62 -61 89 -125 93 -218 5 -101 -8 -136 -112 -291 -89 -133 -154 -253 -211 -391 -89 -217 -218 -437 -362 -615 -37 -47 -142 -159 -233 -250 -110 -109 -175 -183 -193 -217 -23 -43 -317 -901 -317 -924 0 -11 153 -60 161 -51 3 4 68 194 144 422 76 228 151 440 166 470 21 40 68 92 164 183 277 263 467 536 614 881 73 170 130 277 226 421 110 165 129 223 123 374 -4 99 -7 115 -41 185 -63 132 -185 236 -322 272 -63 17 -635 19 -871 3 -424 -28 -878 -95 -1253 -185 -142 -34 -292 -47 -246 -22 32 17 85 71 101 101 22 41 74 311 74 382 0 34 -5 77 -12 96 -28 83 -106 161 -189 188 l-37 12 -5 167 c-4 140 -9 182 -31 261 -108 384 -413 674 -791 752 -109 23 -328 24 -424 4z m471 -195 c277 -89 474 -291 574 -590 28 -84 29 -89 29 -315 -1 -234 -10 -332 -53 -530 -20 -90 -15 -87 -107 -54 -56 19 -74 21 -265 17 -179 -4 -213 -8 -269 -27 -69 -24 -368 -171 -413 -202 -15 -11 -40 -47 -57 -81 -17 -34 -31 -56 -31 -51 0 22 -115 156 -178 208 -36 30 -100 73 -143 95 l-78 40 -30 79 c-85 222 -115 389 -108 605 3 119 9 166 27 221 96 298 315 514 612 600 138 40 339 34 490 -15z m817 -1205 c39 -45 40 -79 6 -244 -26 -130 -35 -155 -61 -165 -22 -9 -62 -7 -68 2 -3 4 8 73 24 152 16 79 32 171 36 205 10 100 15 104 63 50z m-1901 -507 c46 -111 81 -207 78 -215 -8 -19 -60 -16 -79 5 -25 28 -127 293 -127 332 0 33 22 80 38 80 4 0 45 -91 90 -202z m341 -203 c20 -33 51 -83 68 -111 l30 -50 -34 -39 c-18 -21 -35 -36 -37 -34 -3 3 -137 325 -153 369 -12 31 89 -78 126 -135z m2749 -549 l73 -18 -129 -43 c-221 -74 -471 -215 -619 -349 -33 -31 -68 -56 -77 -56 -9 0 -42 7 -74 16 l-58 16 25 50 c18 36 26 72 29 129 l5 79 46 34 c88 65 225 125 341 151 89 20 339 15 438 -9z" />
-                                    <path d="M1360 1143 c-1 -416 -45 -646 -177 -911 -31 -62 -54 -114 -52 -116 2 -2 34 -22 71 -44 49 -30 69 -38 76 -29 28 35 119 235 152 336 73 219 82 281 87 609 l5 292 -81 0 -81 0 0 -137z" />
-                                    <path d="M1843 988 c5 -328 14 -390 87 -609 33 -101 124 -301 152 -336 7 -9 27 -1 76 29 37 22 69 42 71 44 2 2 -21 54 -52 116 -124 248 -164 436 -174 805 l-6 243 -80 0 -79 0 5 -292z" />
-                                </g>
-                            </svg>
-                            <h5>Physiotherapy</h5>
-                        </div>
-                        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                            <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                        </svg>
-                    </a>
-                    <a href="javascript:void(0);" onclick="_setServiceId(10)" data-toggle="modal" data-target="#bookNowModal" class="mt-4 more-plan-list">
-                        <div class="d-flex align-items-center mr-3">
-                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 512.000000 512.000000">
-                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                                    <path d="M1890 4713 c-71 -26 -106 -144 -66 -222 33 -63 61 -71 244 -71 l162 0 0 -135 0 -135 -98 0 c-64 0 -104 -4 -116 -13 -15 -11 -23 -7 -63 31 -25 25 -76 58 -112 76 -61 29 -74 31 -172 31 -101 0 -108 -1 -181 -38 -91 -44 -146 -102 -192 -197 -29 -60 -31 -73 -31 -170 0 -94 3 -111 28 -164 54 -117 137 -190 258 -227 145 -45 325 2 420 109 28 31 30 32 51 17 13 -8 42 -15 65 -15 l43 0 0 -47 -1 -48 -162 -133 c-203 -166 -237 -208 -289 -352 l-23 -65 0 -1170 0 -1170 28 -57 c33 -66 82 -111 146 -133 65 -22 877 -22 941 0 62 22 115 69 144 127 l26 52 0 1180 0 1181 -25 70 c-43 122 -92 180 -282 338 l-173 142 0 43 0 42 50 0 c41 0 56 5 75 25 23 22 25 32 25 110 l0 87 248 -4 c232 -3 250 -5 297 -26 65 -30 128 -92 157 -156 23 -51 23 -55 28 -571 5 -502 6 -522 28 -585 29 -88 76 -157 131 -191 44 -28 48 -29 186 -29 125 0 144 2 158 18 10 10 17 29 17 43 -1 56 -33 69 -173 69 -126 0 -134 3 -172 80 -42 83 -45 115 -45 606 0 276 -4 494 -10 525 -23 123 -120 249 -232 302 -78 37 -160 47 -405 47 l-213 0 0 85 c0 119 -7 125 -145 125 l-105 0 0 135 0 135 165 0 c185 0 211 7 245 63 24 39 27 125 5 168 -9 16 -30 39 -48 49 -30 19 -52 20 -427 19 -217 0 -402 -3 -410 -6z m770 -143 c0 -20 -7 -20 -360 -20 -353 0 -360 0 -360 20 0 20 7 20 360 20 353 0 360 0 360 -20z m-894 -437 c66 -22 145 -101 167 -167 47 -136 -10 -277 -137 -344 -42 -22 -64 -26 -126 -27 -116 0 -196 51 -249 157 -56 111 -36 224 54 314 80 80 183 104 291 67z m714 -263 l0 -150 -180 0 -180 0 0 150 0 150 180 0 180 0 0 -150z m-150 -305 c0 -22 -4 -25 -35 -25 -31 0 -35 3 -35 25 0 22 4 25 35 25 31 0 35 -3 35 -25z m48 -174 c62 -32 325 -258 360 -308 18 -27 41 -72 52 -101 20 -51 20 -81 20 -1205 0 -1138 0 -1152 -20 -1185 -37 -61 -46 -62 -497 -62 -387 0 -410 1 -440 20 -18 10 -40 34 -50 52 -17 31 -18 95 -18 1178 l0 1145 23 56 c12 31 36 76 52 101 30 45 302 277 363 310 43 23 109 22 155 -1z" />
-                                    <path d="M1482 4034 c-20 -14 -22 -24 -22 -104 0 -101 10 -120 65 -120 23 0 39 7 49 21 14 21 15 20 87 -30 78 -55 93 -59 127 -35 22 15 30 66 14 90 -16 25 -257 194 -277 194 -11 0 -31 -7 -43 -16z" />
-                                    <path d="M2168 2976 c-150 -62 -239 -206 -225 -364 12 -123 78 -223 189 -283 60 -33 68 -34 168 -34 96 0 110 2 160 29 195 101 256 345 132 525 -91 133 -275 188 -424 127z m203 -117 c92 -31 154 -118 154 -214 -1 -129 -98 -225 -225 -225 -129 0 -224 96 -224 225 0 154 149 262 295 214z" />
-                                    <path d="M2144 2794 c-20 -19 -24 -31 -19 -52 9 -38 32 -52 87 -52 26 0 48 -3 48 -8 0 -4 -27 -28 -60 -52 -74 -56 -91 -90 -63 -128 20 -27 21 -27 161 -30 l140 -3 21 27 c26 33 26 45 0 78 -13 16 -30 26 -47 26 l-27 0 3 89 c5 122 -4 131 -128 131 -84 0 -93 -2 -116 -26z" />
-                                </g>
-                            </svg>
-                            <h5>Rent Medical Equipment</h5>
-                        </div>
-                        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                            <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                        </svg>
-                    </a>
-                    <a href="javascript:void(0);" onclick="_setServiceId(11)" data-toggle="modal" data-target="#bookNowModal" class="mt-4 more-plan-list">
-                        <div class="d-flex align-items-center mr-3">
-                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 512.000000 512.000000">
-                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                                    <path d="M3562 4687 l-152 -152 138 -138 c75 -75 142 -137 147 -137 6 0 78 67 160 150 l150 150 -140 140 c-77 77 -142 140 -145 140 -3 0 -74 -69 -158 -153z" />
-                                    <path d="M2628 4073 l-526 -526 -32 26 c-41 35 -72 42 -106 25 -38 -18 -59 -57 -50 -94 10 -39 709 -740 748 -749 56 -14 117 46 104 100 -3 13 -18 38 -33 55 l-26 32 89 89 89 89 -18 28 c-61 92 -72 132 -72 252 0 109 2 119 32 183 45 95 127 178 222 225 73 36 77 37 190 37 121 0 161 -11 254 -72 l27 -18 123 123 122 122 -300 300 c-165 165 -302 300 -305 300 -3 0 -242 -237 -532 -527z" />
-                                    <path d="M3112 3699 c-204 -79 -260 -370 -102 -529 160 -159 452 -102 529 105 47 124 19 266 -69 355 -89 88 -235 116 -358 69z m178 -249 c11 -11 20 -33 20 -50 0 -17 -9 -39 -20 -50 -11 -11 -33 -20 -50 -20 -17 0 -39 9 -50 20 -11 11 -20 33 -20 50 0 17 9 39 20 50 11 11 33 20 50 20 17 0 39 -9 50 -20z" />
-                                    <path d="M1820 3025 l-185 -185 183 -182 182 -183 185 185 185 185 -183 183 -182 182 -185 -185z" />
-                                    <path d="M3639 3132 c-26 -23 -33 -38 -37 -80 -4 -50 -2 -55 51 -134 145 -217 209 -427 210 -678 0 -407 -200 -773 -545 -997 -78 -50 -103 -72 -115 -100 -32 -77 17 -161 98 -170 54 -6 76 4 202 90 484 330 714 950 568 1531 -51 202 -154 413 -252 517 -43 46 -48 49 -97 49 -43 0 -57 -5 -83 -28z" />
-                                    <path d="M1230 2035 l0 -85 403 2 402 3 0 80 0 80 -402 3 -403 2 0 -85z" />
-                                    <path d="M960 1645 l0 -165 283 0 282 0 25 -37 c42 -62 200 -222 287 -289 44 -35 123 -89 174 -119 77 -46 101 -55 140 -55 58 0 103 33 120 89 10 32 8 45 -8 82 -16 36 -31 50 -79 76 -89 48 -164 101 -254 178 l-82 70 256 3 256 2 0 165 0 165 -700 0 -700 0 0 -165z" />
-                                    <path d="M2592 1259 c-204 -79 -260 -370 -102 -529 124 -123 336 -123 460 0 159 160 102 452 -105 529 -74 28 -180 28 -253 0z m178 -249 c11 -11 20 -33 20 -50 0 -17 -9 -39 -20 -50 -43 -43 -120 -11 -120 50 0 38 32 70 70 70 17 0 39 -9 50 -20z" />
-                                    <path d="M1797 345 c-65 -96 -117 -177 -117 -180 0 -3 468 -5 1040 -5 572 0 1040 2 1040 5 0 3 -52 84 -117 180 l-116 175 -807 0 -807 0 -116 -175z" />
-                                </g>
-                            </svg>
-                            <h5>Lab Tests</h5>
-                        </div>
-                        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                            <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                        </svg>
-                    </a>
-                    <a href="javascript:void(0);" onclick="_setServiceId(12)" data-toggle="modal" data-target="#bookNowModal" class="mt-4 more-plan-list">
-                        <div class="d-flex align-items-center mr-3">
-                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 512.000000 512.000000">
-                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                                    <path d="M2515 4979 c-144 -22 -266 -78 -355 -163 -41 -40 -51 -45 -123 -55 -257 -37 -437 -185 -512 -423 -33 -104 -40 -186 -25 -308 15 -131 49 -251 105 -365 l44 -90 -34 -35 c-56 -60 -69 -95 -73 -207 -3 -78 0 -113 13 -154 22 -67 91 -142 150 -165 36 -13 45 -22 50 -48 21 -104 93 -270 157 -364 18 -26 61 -75 96 -110 l64 -63 -7 -55 c-8 -66 -40 -186 -60 -224 -12 -24 -36 -33 -242 -94 -125 -38 -238 -74 -250 -82 -12 -7 -24 -26 -28 -42 -6 -29 -7 -29 -98 -35 -388 -27 -719 -311 -819 -703 -22 -86 -23 -104 -23 -556 0 -435 1 -468 18 -485 17 -17 110 -18 1997 -18 1887 0 1980 1 1997 18 17 17 18 50 18 490 l-1 472 -26 96 c-105 386 -434 661 -820 686 -84 5 -98 9 -98 23 0 45 -31 60 -275 133 l-240 73 -22 59 c-12 33 -29 101 -38 151 l-17 91 57 54 c69 65 130 149 178 244 35 72 87 222 87 254 0 13 15 24 47 36 25 10 65 37 88 60 58 57 79 123 80 246 0 87 -3 101 -30 154 -27 52 -69 95 -107 107 -6 2 5 51 30 128 57 178 76 301 69 463 -6 150 -21 218 -76 332 -83 174 -231 304 -452 395 -164 68 -361 100 -494 79z m310 -173 c113 -33 274 -112 342 -168 107 -90 178 -203 209 -334 23 -98 15 -305 -17 -432 l-23 -93 -15 38 c-47 121 -150 235 -259 286 -66 31 -71 32 -257 38 -104 4 -201 10 -215 14 -161 45 -255 89 -368 174 -92 70 -118 75 -178 35 -151 -101 -273 -293 -314 -493 -9 -46 -19 -80 -22 -75 -18 30 -49 158 -59 248 -16 134 -3 216 52 326 78 156 235 249 420 250 56 0 57 1 123 65 146 145 348 187 581 121z m-653 -630 c186 -129 376 -185 632 -187 81 0 154 -5 173 -12 131 -49 224 -196 254 -400 15 -100 30 -119 100 -127 65 -6 90 -36 97 -112 8 -101 -34 -178 -106 -194 -65 -14 -82 -26 -90 -63 -60 -259 -105 -353 -227 -476 -117 -118 -267 -178 -445 -179 -198 -1 -376 81 -500 230 -59 70 -127 214 -151 319 -12 50 -24 101 -28 115 -7 26 -29 39 -101 61 -66 21 -90 61 -90 156 0 79 17 128 47 136 10 3 34 8 54 11 59 10 64 22 66 180 2 167 21 257 83 383 36 72 140 203 162 203 4 0 35 -20 70 -44z m169 -1871 c163 -43 322 -38 476 13 l83 28 6 -35 c11 -70 45 -183 66 -224 l21 -42 -34 -227 -33 -227 -76 -8 c-94 -10 -548 -7 -614 4 l-50 8 -33 219 -33 220 29 70 c16 39 38 110 47 158 l18 87 35 -15 c19 -8 60 -21 92 -29z m-356 -377 c15 -86 205 -1352 202 -1354 -1 -1 -106 166 -234 371 l-231 374 59 67 c47 53 59 74 59 101 0 22 -29 91 -86 204 -47 94 -83 174 -79 177 6 6 273 90 292 91 7 1 15 -14 18 -31z m1309 -13 c82 -25 151 -45 153 -45 2 0 -37 -81 -87 -180 -49 -99 -90 -192 -90 -208 0 -20 17 -47 60 -96 39 -43 58 -72 53 -80 -77 -128 -457 -735 -459 -734 -1 2 45 311 102 688 57 377 104 688 104 693 0 11 4 10 164 -38z m-1676 -291 l63 -125 -60 -65 c-67 -74 -78 -101 -56 -144 8 -16 149 -245 311 -507 163 -263 299 -484 301 -490 4 -10 -148 -13 -741 -13 l-746 0 0 379 c0 409 5 465 54 595 52 138 151 266 270 350 109 77 106 79 67 -37 -29 -87 -35 -119 -39 -225 l-5 -122 -32 -20 c-51 -31 -114 -106 -142 -166 -56 -123 -54 -251 5 -378 36 -77 63 -106 99 -106 37 0 113 29 141 53 61 55 -15 156 -88 117 -17 -9 -21 -4 -35 42 -24 82 -20 136 18 209 86 170 272 196 407 58 35 -36 80 -128 80 -163 0 -8 -11 -17 -25 -20 -32 -8 -57 -47 -53 -82 4 -38 43 -62 113 -70 51 -5 64 -3 85 14 24 19 25 26 25 119 0 78 -5 110 -23 158 -61 160 -200 266 -369 282 l-63 6 6 56 c16 166 62 288 140 371 l47 50 91 0 91 0 63 -126z m2115 94 c58 -77 106 -205 125 -333 23 -153 24 -143 -11 -155 -46 -15 -103 -64 -134 -117 -35 -61 -44 -172 -18 -240 55 -143 231 -216 372 -153 215 95 220 404 8 505 -54 25 -55 26 -55 70 0 86 -54 315 -92 388 -12 24 3 22 65 -9 176 -89 316 -242 383 -420 49 -130 54 -186 54 -595 l0 -379 -750 0 c-412 0 -750 2 -750 4 0 2 140 230 311 507 171 277 313 509 316 516 10 26 -8 61 -66 127 l-60 68 62 124 62 124 77 0 c75 0 78 -1 101 -32z m-1273 -293 c69 -3 195 -1 280 4 85 6 156 8 158 7 1 -2 -36 -258 -83 -569 -47 -311 -85 -570 -85 -576 0 -8 -56 -11 -173 -11 l-172 0 -84 558 c-46 306 -86 568 -88 580 -6 24 -5 24 58 18 35 -3 120 -8 189 -11z m1581 -364 c33 -32 39 -45 39 -80 0 -80 -50 -134 -125 -134 -81 0 -131 59 -126 152 0 13 18 41 40 62 34 34 44 39 86 39 42 0 52 -5 86 -39z" />
-                                </g>
-                            </svg>
-                            <h5>Doctor Consultation</h5>
-                        </div>
-                        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                            <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                        </svg>
-                    </a>
-                    <a href="javascript:void(0);" onclick="_setServiceId(13)" data-toggle="modal" data-target="#bookNowModal" class="mt-4 more-plan-list">
-                        <div class="d-flex align-items-center mr-3">
-                            <svg class="icons" xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 512.000000 512.000000">
-                                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" stroke="none">
-                                    <path d="M1462 4479 c-98 -17 -186 -80 -234 -171 l-23 -43 -3 -592 c-3 -584 -2 -593 18 -613 14 -14 33 -20 62 -20 40 0 46 5 200 158 l159 157 919 0 919 0 159 -157 c154 -153 160 -158 200 -158 29 0 48 6 62 20 20 20 20 33 20 595 0 555 -1 576 -21 629 -23 63 -87 134 -147 165 -22 11 -68 25 -103 31 -79 12 -2110 12 -2187 -1z m2181 -173 c45 -17 73 -40 96 -81 14 -26 16 -83 19 -464 l3 -435 -80 77 c-44 42 -99 86 -123 99 l-43 23 -955 0 -955 0 -43 -23 c-24 -13 -79 -57 -123 -99 l-80 -77 3 435 c3 467 3 464 56 512 51 47 35 46 1142 46 856 0 1052 -2 1083 -13z" />
-                                    <path d="M1883 4039 c-51 -15 -83 -61 -83 -121 0 -44 4 -54 34 -84 30 -30 40 -34 86 -34 46 0 56 4 86 34 30 30 34 40 34 84 0 72 -34 111 -110 127 -8 2 -29 -1 -47 -6z" />
-                                    <path d="M2523 4039 c-51 -15 -83 -61 -83 -121 0 -44 4 -54 34 -84 30 -30 40 -34 86 -34 46 0 56 4 86 34 30 30 34 40 34 84 0 72 -34 111 -110 127 -8 2 -29 -1 -47 -6z" />
-                                    <path d="M3163 4039 c-51 -15 -83 -61 -83 -121 0 -44 4 -54 34 -84 30 -30 40 -34 86 -34 46 0 56 4 86 34 30 30 34 40 34 84 0 72 -34 111 -110 127 -8 2 -29 -1 -47 -6z" />
-                                    <path d="M1285 2718 c-220 -21 -400 -169 -477 -391 -26 -77 -35 -238 -18 -320 20 -99 80 -204 160 -281 39 -38 69 -70 68 -71 -2 -1 -88 -31 -193 -65 -104 -35 -211 -73 -236 -86 -117 -58 -211 -168 -249 -291 -17 -55 -20 -93 -20 -251 0 -180 1 -186 25 -228 16 -27 44 -54 73 -71 l47 -28 896 0 896 0 48 30 c32 20 56 45 72 74 22 41 23 55 23 220 0 97 -5 194 -10 216 -39 147 -134 267 -265 332 -22 11 -125 48 -230 83 -104 34 -191 64 -193 65 -1 1 31 35 71 76 149 149 201 344 147 553 -26 102 -72 187 -144 263 -126 136 -287 192 -491 171z m248 -205 c162 -77 246 -219 234 -401 -18 -292 -317 -464 -590 -339 -149 68 -234 215 -225 390 6 104 35 180 95 248 92 101 189 142 329 136 76 -3 103 -9 157 -34z m-93 -964 c82 -13 571 -173 627 -205 57 -33 119 -106 143 -170 17 -46 20 -78 20 -204 0 -137 -2 -150 -19 -160 -13 -7 -298 -10 -855 -10 -981 0 -876 -16 -876 133 0 120 15 218 40 268 26 50 82 112 126 139 45 28 521 188 609 205 89 17 106 17 185 4z" />
-                                    <path d="M3690 2719 c-132 -12 -250 -70 -345 -170 -106 -113 -165 -261 -165 -415 0 -163 51 -288 165 -401 42 -42 74 -77 73 -78 -2 -1 -88 -31 -193 -65 -104 -35 -208 -72 -230 -83 -111 -55 -205 -158 -248 -274 -19 -51 -22 -83 -25 -253 -3 -190 -3 -196 21 -240 15 -30 40 -55 72 -75 l48 -30 896 0 896 0 47 28 c29 17 57 44 73 71 24 42 25 48 25 228 0 158 -3 196 -20 251 -38 123 -132 233 -249 291 -25 13 -131 51 -236 86 -104 34 -191 64 -193 65 -1 1 29 33 67 70 116 112 171 242 171 405 0 106 -20 190 -64 278 -113 225 -321 336 -586 311z m201 -189 c80 -27 126 -57 182 -119 60 -68 89 -144 95 -248 9 -175 -76 -322 -225 -390 -211 -97 -450 -17 -549 182 -67 135 -56 300 26 420 53 78 148 143 237 164 69 16 170 12 234 -9z m-51 -980 c80 -13 570 -174 626 -206 49 -28 106 -88 134 -143 25 -50 40 -148 40 -268 0 -149 105 -133 -876 -133 -557 0 -842 3 -855 10 -17 10 -19 23 -19 160 0 126 3 158 20 204 24 64 86 137 143 170 52 30 543 192 617 205 76 12 96 12 170 1z" />
-                                </g>
-                            </svg>
-                            <h5>Counselling</h5>
-                        </div>
-                        <svg class="arrow" xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                            <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <!-- trestimonial section start -->
 <section class="testimony-sec pt-50 pb-50" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
     <div class="container">
@@ -699,136 +369,6 @@ WE ARE THE FUTURE OF BETTER HEALTH CARE.
         </div>
     </div>
 </section>
-
-<!-- doctors list start -->
-<?php if ($team_list && count($team_list) > 0) { ?>
-    <section class="doc-list-sec pt-50 pb-50">
-        <span class="red-round"></span>
-        <div class="container" data-aos="fade-up" data-aos-duration="1000">
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="title text-center">
-                        Meet our experienced Doctors<br>for best treatment
-                </div>
-                <?php foreach ($team_list as $dt) { ?>
-                    <div class="col-lg-3 col-md-3 col-sm-6 col-12">
-                        <div class="doctor-profile mb-4">
-                            <div class="doc-img-wrap">
-                                <img src="<?= base_url(); ?>uploads/<?= $dt->image ?>" alt="Doctor">
-                            </div>
-                            <div class="doc-name">
-                                <h5><?= $dt->name ?></h5>
-                                <p><?= $dt->designation ?></p>
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
-                <div class="col-12 text-center">
-                    <a href="/teams" class="theme-red-dark-btn mt-4">View All</a>
-                </div>
-            </div>
-        </div>
-    </section>
-<?php } ?>
-<!-- doctors list end -->
-<!-- book now section strat -->
-<section class="book-now pt-50 pb-50 blue-bg">
-    <div class="container">
-        <div class="row justify-content-between align-items-center">
-            <div class="col-md-7 col-sm-12 col-12" data-aos="fade-up" data-aos-duration="1000">
-                <h2 class=""><span>30% off</span> on Home Collection Sample </h2>
-                <p class=" mb-0">Call Now For Home Collection Sample </p>
-            </div>
-            <div class="col-md-3 col-sm-12 col-12 text-center" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                <a class="btn theme-red-dark-btn mt-3" href="tel:+918420218585">
-                    <svg version="1.0" class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
-                        <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#fff" stroke="none">
-                            <path d="M1285 4005 c-698 -612 -1271 -1117 -1272 -1122 -3 -9 171 -215 185
-                                                    -221 4 -1 31 19 60 44 l52 46 0 -1376 0 -1376 2250 0 2250 0 0 1376 0 1376 52
-                                                    -46 c29 -25 56 -45 59 -44 11 5 189 210 189 218 0 5 -135 127 -300 271 l-300
-                                                    263 0 528 0 528 -450 0 -449 0 -3 -132 -3 -131 -522 456 c-287 252 -523 457
-                                                    -525 456 -2 0 -574 -501 -1273 -1114z m1951 125 l674 -590 0 315 0 315 150 0
-                                                    150 0 0 -447 1 -448 149 -130 150 -129 0 -1358 0 -1358 -1950 0 -1950 0 0
-                                                    1358 0 1357 973 852 c534 468 973 852 975 852 2 1 307 -265 678 -589z" />
-                            <path d="M2860 3151 l0 -151 35 0 c57 0 185 -29 255 -59 173 -72 329 -228 401
-                                                    -401 30 -70 59 -198 59 -255 l0 -35 151 0 152 0 -7 83 c-41 510 -455 924 -963
-                                                    964 l-83 6 0 -152z" />
-                            <path d="M1559 3073 c-185 -189 -240 -257 -284 -357 -46 -105 -59 -172 -59
-                                                    -311 0 -120 3 -137 33 -224 17 -52 48 -122 68 -155 27 -46 190 -215 637 -664
-                                                    657 -660 662 -664 836 -723 88 -30 105 -33 225 -33 148 0 216 14 332 70 95 45
-                                                    186 120 370 306 l153 153 -425 425 -425 425 -62 -62 c-35 -33 -73 -66 -85 -72
-                                                    -28 -14 -98 -14 -126 0 -31 16 -266 249 -283 281 -17 32 -18 101 -3 131 6 12
-                                                    39 50 72 85 l62 62 -426 426 -425 425 -185 -188z m414 -461 l218 -218 -18 -39
-                                                    c-13 -30 -17 -68 -18 -155 0 -113 1 -117 38 -194 33 -70 54 -96 190 -231 133
-                                                    -133 162 -157 232 -191 78 -39 80 -39 195 -39 87 1 125 5 155 18 l39 18 221
-                                                    -221 220 -221 -85 -83 c-97 -94 -162 -130 -269 -148 -87 -15 -169 -3 -262 38
-                                                    -60 26 -105 68 -646 608 -511 508 -587 588 -618 647 -67 128 -70 276 -8 407
-                                                    23 49 173 222 192 222 3 0 104 -98 224 -218z" />
-                            <path d="M2860 2550 c0 -128 2 -150 15 -150 9 0 34 -9 55 -20 39 -20 80 -79
-                                                    80 -115 0 -13 22 -15 151 -15 l152 0 -7 52 c-16 115 -67 212 -152 287 -71 63
-                                                    -185 110 -266 111 l-28 0 0 -150z" />
-                        </g>
-                    </svg><span>Call For Home Visit</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
 <!-- book now section end -->
-<!-- article section strat -->
-<section class="article-sec pt-50 pb-50">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <h2 class="title text-center">
-                    Take A Look At Our Most<br>Recent Articles
-            </div>
-            <div class="col-md-6 col-sm-6 col-12 h-100" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-                <div class="article-wrap border h-100">
-                    <a href="<?= base_url('/blogs/blog_critihome_1'); ?>">
-                        <div class="article-img-blck">
-                            <img src="<?= base_url('/images/atricle-1.jpg'); ?>" alt="Aritcle">
-                        </div>
-                        <div class="artcle-shrt-desc">
-                            <h5>Expert Home Health Care with a Healing Touch – Welcome to CritiHome</h5>
-                            <p>
-                                Whether it's recovery after surgery, chronic illness management, or elderly care, our expert caregivers and medical professionals provide <strong>compassionate and personalized health care at home</strong>.
-                            </p>
-                            <span class="artcle-more">Read more
-                                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                    <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z">
-                                    </path>
-                                </svg>
-                            </span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="800">
-                <div class="article-wrap border h-100">
-                    <a href="<?= base_url('/blogs/blog_critihome_2'); ?>">
-                        <div class="article-img-blck">
-                            <img src="<?= base_url('/images/atricle-2.jpg'); ?>" alt="Artcle">
-                        </div>
-                        <div class="artcle-shrt-desc">
-                            <h5>Elderly Care at Home: A Gentle Approach to Healthy Aging – Welcome to CritiHome</h5>
-                            <p class="lead">Aging is a natural part of life, but it often comes with challenges — limited mobility, memory issues, chronic conditions, or loneliness. That’s why <strong>elderly care at home</strong> has become an essential service for families who want their loved ones to receive quality care without leaving the comfort of their homes.</p>
-
-                            <span class="artcle-more">Read more
-                                <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24">
-                                    <path d="M23.124,9.879,18.538,5.293,17.124,6.707l4.262,4.263L0,11l0,2,21.446-.03-4.323,4.323,1.414,1.414,4.587-4.586A3.007,3.007,0,0,0,23.124,9.879Z">
-                                    </path>
-                                </svg>
-                            </span>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 text-center">
-            <a href="/blogs" class="theme-red-dark-btn mt-4">View All</a>
-        </div>
-    </div>
-</section>
 
 <?= $this->endSection() ?> 
