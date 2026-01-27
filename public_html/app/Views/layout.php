@@ -291,7 +291,7 @@
     <div class="copyright black-dark-shade-1 py-3">
       <div class="container">
         <div class="row">
-          <div class="col-12 text-center">
+          <div class="col-12 text-center" style="color: #ffffff;">
             <p class=" mb-0">&copy; 2026 Digital Expansion Private Limited. All Rights Reserved.</p>
           </div>
         </div>

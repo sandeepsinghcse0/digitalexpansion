@@ -151,14 +151,14 @@ class Home extends BaseController
             $body = $view->setData($emailData)->render('email_template');
 
             // Send admin mail
-            send_mail('CritiHome | Booking Received', $body);
+            send_mail('Digital Expansion Pvt Ltd| We will get in touch ASAP', $body);
 
             // Send confirmation mail to user if email provided
             if (!empty($postedData['email'])) {
                 $emailData['title'] = "Your Booking Details";
                 $emailData['footer_text'] = "*We will connect shortly";
                 $body = $view->setData($emailData)->render('email_template');
-                send_mail('CritiHome | Booking Submitted', $body, $postedData['email']);
+                send_mail('Digital Expansion Pvt Ltd| We will get in touch ASAP', $body, $postedData['email']);
             }
 
             $response['success'] = true;
@@ -192,7 +192,7 @@ class Home extends BaseController
             $body = view('email_template', $email_data);
 
             // Send the mail
-            send_mail('CritiHome | Enquiry Received', $body, $posted_data['email']);
+            send_mail('Digital Expansion Pvt Ltd| We will get in touch ASAP', $body, $posted_data['email']);
 
             $return['success'] = true;
             $return['response'] = "Your Query Sent successfully.";
@@ -236,7 +236,7 @@ class Home extends BaseController
         $view = \Config\Services::renderer();
         $body = $view->setData($emailData)->render('email_template');
         // Send the mail
-        send_mail('CritiHome | Job Appliaction Recieved', $body);
+        send_mail('Digital Expansion Pvt Ltd| We will get in touch ASAP', $body);
         // Here you can insert to DB or send an email
         return redirect()->to(base_url('/career'))->with('message', 'Application submitted successfully!');
     }
