@@ -140,7 +140,6 @@ class Home extends BaseController
                     'Full Name'        => $postedData['name'],
                     'Phone Number'     => $postedData['phone_number'],
                     'Email Address'    => !empty($postedData['email']) ? $postedData['email'] : 'N/A',
-                    'Address'          => $postedData['address'],
                     'Service Type'     => $service->name ?? 'NA',
                     'Appointment Date' => $postedData['booking_date']
                 ]

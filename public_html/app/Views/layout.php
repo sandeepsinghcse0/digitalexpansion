@@ -341,18 +341,6 @@
                       </div>
                       <div class="col-sm-6">
                         <div class="form-group">
-                          <label class="fieldlabels">Location *</label>
-                          <select class="form-control required" name="address" title="City" data-input-type="default">
-                            <option value="">- Select -</option>
-                            <?php foreach ($city_list as $dt) { ?>
-                              <option value="<?= $dt->name ?>, <?= $dt->pin ?>">
-                                <?= $dt->name ?>, <?= $dt->pin ?></option>
-                            <?php } ?>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <div class="form-group">
                           <label class="fieldlabels">Service Type *</label>
                           <select class="form-control required" name="service_id" id="service-type-input" title="Service Type" data-input-type="default">
                             <option value="">- Select -</option>
