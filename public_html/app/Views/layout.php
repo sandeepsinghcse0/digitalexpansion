@@ -60,7 +60,7 @@
       margin-top: 16px;
     }
     .main-wrapper {
-      width: 90%;
+      width: 100%;
       margin: 0 auto;
     }
   </style>
@@ -141,7 +141,7 @@
           <div class="col-12">
             <nav class="navbar navbar-expand-lg site-navbar">
               <a class="navbar-brand" href="<?= base_url(); ?>">
-                <img src="<?= base_url('/images/horizontal_500x160.png'); ?>" alt="Logo" />
+                <img src="<?= base_url('/images/digital-expansion-horizontal-logo.png'); ?>" alt="Logo" />
               </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <img src="<?= base_url('/images/menu.png'); ?>" alt="menu" />
